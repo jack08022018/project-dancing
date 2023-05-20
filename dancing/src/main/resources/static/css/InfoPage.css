@@ -1,0 +1,13 @@
+.custom-datefield .x-form-trigger {
+    display: table-cell !important;
+    vertical-align: top !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+}
+.custom-datefield .x-form-trigger-wrap {
+    display: table !important;
+    width: 100% !important;
+    height: 100% !important;
+}
