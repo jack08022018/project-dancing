@@ -11,3 +11,8 @@
     width: 100% !important;
     height: 100% !important;
 }
+
+.custom-displayfield .x-form-display-field-default {
+    text-align: center;
+    font-weight: bold;
+}
