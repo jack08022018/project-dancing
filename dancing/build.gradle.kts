@@ -32,7 +32,13 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
 	implementation("org.springframework.boot:spring-boot-starter-logging:3.0.1")
 	implementation("org.springframework.boot:spring-boot-starter-log4j2:3.0.1")
+}
+
+configurations {
+	all {
+		exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")
+	}
 }

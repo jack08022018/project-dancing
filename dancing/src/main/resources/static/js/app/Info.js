@@ -14,9 +14,6 @@ Ext.define('ext.Info', {
 
 		let childForm = Ext.create('Ext.form.Panel', {
             width : '100%',
-//            padding : '10 10 0 10',
-//            style : 'border:1px solid #b5b8c8; border-radius:7px;box-shadow: #39393980 0px 0px 25px;background-color: white;',
-//            bodyStyle: 'background-color: white;',
             title: 'SỐ BUỔI ĐÃ TẬP',
             layout: {
                 type: 'table',
