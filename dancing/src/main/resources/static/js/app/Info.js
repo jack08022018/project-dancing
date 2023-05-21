@@ -3,10 +3,11 @@ Ext.define('ext.Info', {
 	header: false,
 	width : '100%',
 	border: false,
+			autoScroll: true,
 	layout: {
-        type: 'hbox',
-        align: 'middle',
-        pack: 'center'
+        type: 'vbox',
+        align: 'center',
+//        pack: 'center'
     },
     bodyStyle: 'background-color: #f5f5f5;',
 	initComponent : function() {
@@ -31,14 +32,16 @@ Ext.define('ext.Info', {
                 {xtype: 'displayfield', width: '100%', hideLabel: true, cls: 'custom-displayfield', value: '2023/05/20'},
                 {xtype: 'displayfield', width: '100%', hideLabel: true, cls: 'custom-displayfield', value: '2023/05/20'},
                 {xtype: 'displayfield', width: '100%', hideLabel: true, cls: 'custom-displayfield', value: '2023/05/20'},
+
             ]
         });
 
 		let mainForm = Ext.create('Ext.form.Panel', {
-			width : 400,
+			width : 380,
 			border : false,
-			padding : '10 10 10 10',
-			style : 'border:1px solid #b5b8c8; border-radius:7px;box-shadow: #39393980 0px 0px 25px;background-color: white;',
+			padding : 5,
+			margin: '5 0 5 0',
+			style : 'border: 1px solid #b5b8c8; border-radius:7px;box-shadow: #39393980 0px 0px 25px;background-color: white;',
 			bodyStyle: 'background-color: white;',
 			layout: 'vbox',
 			items: [
@@ -66,20 +69,18 @@ Ext.define('ext.Info', {
 		this.items = [mainForm];
 		this.callParent(arguments);
 
-		async function products() {
+		async function getData() {
 			try {
-				let params = {
-					"currentPage": 0,
-					"pageSize": 2
-				};
-				let ajaxUrl = 'api/products';
+				let params = {};
+				let ajaxUrl = 'api/getData';
 				let json = await getDataAjax(ajaxUrl, params);
 				console.log(json);
-				mainStore.loadData(json.content);
 			}catch(e) {
 				handleException(e);
 			}
 		}
+
+		getData();
 
 //		END
 	}

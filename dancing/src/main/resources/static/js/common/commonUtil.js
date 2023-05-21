@@ -34,10 +34,39 @@ function getDataAjax(ajaxUrl, params) {
 		url : CONTEXT_PATH + ajaxUrl,
 		jsonData : params,
 		timeout: 10000,
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+//			'Authorization':'Basic xxxxxxxxxxxxx',
+		},
+		success : function(response) {
+			var data = Ext.decode(response.responseText);
+			deferred.resolve(data);
+			unMask();
+		},
+		error : function(response) {
+			unMask();
+			deferred.reject({info: Ext.decode(response.responseText)});
+		},
+		failure: function(response){
+			unMask();
+			deferred.reject({info: Ext.decode(response.responseText)});
+		}
+	});
+	return deferred.promise;
+}
+
+function postDataAjax(ajaxUrl, params) {
+	let deferred = new Ext.Deferred();
+	mask();
+	Ext.Ajax.request({
+		url : CONTEXT_PATH + ajaxUrl,
+		jsonData : params,
+		timeout: 10000,
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'Authorization':'Basic xxxxxxxxxxxxx',
+//			'Authorization':'Basic xxxxxxxxxxxxx',
 		},
 		success : function(response) {
 			var data = Ext.decode(response.responseText);
