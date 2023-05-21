@@ -13,13 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/view")
 @RequiredArgsConstructor
 public class ViewController {
-    @GetMapping("/index")
-    public ModelAndView view() {
-        var view = new ModelAndView();
-        view.setViewName("index");
-        return view;
-    }
-
     @GetMapping("/login")
     public ModelAndView login() {
         var view = new ModelAndView();
@@ -27,10 +20,24 @@ public class ViewController {
         return view;
     }
 
-    @GetMapping("/info")
-    public ModelAndView info() {
+    @GetMapping("/studentInfo")
+    public ModelAndView studentInfo() {
         var view = new ModelAndView();
-        view.setViewName("info");
+        view.setViewName("studentInfo");
+        return view;
+    }
+
+    @GetMapping("/adminClass")
+    public ModelAndView adminClass() {
+        var view = new ModelAndView();
+        view.setViewName("adminClass");
+        return view;
+    }
+
+    @GetMapping("/adminStudent")
+    public ModelAndView adminStudent() {
+        var view = new ModelAndView();
+        view.setViewName("adminStudent");
         return view;
     }
 

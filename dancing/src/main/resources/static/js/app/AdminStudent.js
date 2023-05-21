@@ -1,15 +1,12 @@
-Ext.define('ext.View', {
+Ext.define('ext.AdminStudent', {
 	extend: 'Ext.form.Panel',
 	header: false,
-	width : '100%',
 	border: false,
+	width : '100%',
 	layout: 'border',
 	initComponent : function() {
 
 		let me = this;
-
-		// Ext.tip.Tip.prototype.minWidth = void 0;
-		// Ext.tip.QuickTipManager.init();
 
 		let targetStore = Ext.widget('mestore');
 		let yearStore = Ext.widget('mestore');
@@ -84,20 +81,7 @@ Ext.define('ext.View', {
 			]
 		});
 //
-		let mainStore = Ext.widget('mestore', {
-			pageSize: 20,
-			proxy: {
-				type : 'ajax',
-				url: CONTEXT_PATH + '/basicInfomationMngt/getTestFrameworkList.json',
-				reader: {
-					type: 'json',
-					enablePaging: true,
-					rootProperty: 'data',
-					totalProperty: 'totalCount',
-				}
-			},
-			queryMode: 'local',
-		});
+		let mainStore = Ext.widget('mestore');
 		let mainGrid = Ext.create('Ext.grid.Panel', {
 			width: '100%',
 			flex: 1,
@@ -125,16 +109,6 @@ Ext.define('ext.View', {
 					}
 				},
 			},
-			bbar : new Ext.PagingToolbar({
-				store : mainStore,
-				pageSize : 20,
-				displayInfo : true,
-				listeners : {
-					beforechange : function(pagingtoolbar, page, eOpts) {
-						rightPanel.setDisabled(true);
-					}
-				}
-			}),
 		});
 
 		let btnExcel = Ext.widget('mebutton', {
@@ -307,7 +281,7 @@ Ext.define('ext.View', {
 				formSearch,
 				mainGrid,
 				{xtype: 'container', width : '100%', layout : 'hbox',
-					items: [btnExcel, {xtype: 'tbfill'}, btnRegister]
+					items: [{xtype: 'tbfill'}, btnRegister]
 				}
 			]
 		});
@@ -334,75 +308,6 @@ Ext.define('ext.View', {
 				},
 			],
 		});
-		function fixSubtite(field, fileName) {
-			var fileList = field.fileInputEl.dom.files;
-			var file = fileList[0];
-			var reader = new FileReader();
-			reader.onload = function(event){
-				let data = reader.result;
-				let arr = data.split(/[\n]/);
-				console.log(arr);
-				arr = _(arr)
-					.map(s => {
-						if(s.includes('-->')) {
-							s = s.replaceAll('\r','');
-							let timeArr = s.split(' --> ');
-							let start = calculTime(timeArr[0]);
-							let end = calculTime(timeArr[1]);
-							return start + ' --> ' + end + '\r';
-						}
-						return s;
-					})
-					.values();
-				// arr.forEach(s => {
-				// 	if(s.includes('-->')) {
-				// 		s = s.replaceAll('\r','');
-				// 		let timeArr = s.split(' --> ');
-				// 		let start = calculTime(timeArr[0]);
-				// 		let end = calculTime(timeArr[1]);
-				// 		s = start + ' --> ' + end + '\r';
-				// 	}
-				// });
-				console.log(arr.join(''))
-			};
-			reader.onerror = function(){
-				console.log('On Error Event');
-			};
-			reader.readAsText(file);
-		}
-		function readFileName(field, fileName) {
-			var fileList = field.fileInputEl.dom.files;
-			var names = fileList.map(s => s)
-		}
-		function calculTime(input) {
-			var arr = input.split(':');
-			var h = parseFloat(arr[0]),
-				m = parseFloat(arr[1]),
-				s = parseFloat(arr[2].replaceAll(',','.'));
-			s = s - 0.5;
-			// 00:58:00.316
-			if(s < 0) {
-				s = s + 60;
-				m = m - 1;
-				if(m < 0) {
-					m = m + 60;
-					h = h - 1;
-				}
-			}else if(s > 60) {
-				s = s - 60;
-				m = m + 1;
-				if(m > 60) {
-					m = m - 60;
-					h = h + 1;
-				}
-			}
-			s = formatNumber(s, 3);
-			if(h < 10) h = '0' + h;
-			if(m < 10) m = '0' + m;
-			if(s < 10) s = '0' + s;
-			return h + ':' + m + ':' + s
-		}
-		// console.log(calculTime('00:58:00.316'));
 
 		this.items = [leftPanel, rightPanel];
 		this.callParent(arguments);

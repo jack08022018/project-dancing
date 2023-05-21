@@ -1,4 +1,4 @@
-Ext.define('ext.Info', {
+Ext.define('ext.StudentInfo', {
 	extend: 'Ext.form.Panel',
 	header: false,
 	width : '100%',
@@ -73,7 +73,7 @@ Ext.define('ext.Info', {
 			try {
 				let params = {};
 				let ajaxUrl = 'api/getData';
-				let json = await getDataAjax(ajaxUrl, params);
+				let json = await postDataAjax(ajaxUrl, params);
 				console.log(json);
 			}catch(e) {
 				handleException(e);

@@ -9,9 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 @Slf4j
 @RestController
@@ -23,16 +22,16 @@ public class DancingController {
     final ObjectMapper customObjectMapper;
     final CommonUtils commonUtils;
 
-    @GetMapping("/getData")
+    @PostMapping("/getData")
     public ResultDto getData() {
         ExcuteApi excuteApi = () -> apiService.getData();
         return commonUtils.handleApi(excuteApi);
     }
 
-//    @PostMapping("/saveData")
-//    public Mono<ResultDto> saveData() {
-//        ExcuteApi excuteApi = () -> apiService.saveData();
-//        return commonUtils.handleApi(excuteApi);
-//    }
+    @PostMapping("/saveClass")
+    public ResultDto saveClass() {
+        ExcuteApi excuteApi = () -> apiService.saveClass();
+        return commonUtils.handleApi(excuteApi);
+    }
 
 }
