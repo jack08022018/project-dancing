@@ -3,10 +3,12 @@ package com.demo.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -16,20 +18,21 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Table("actor")
+@Entity
+@Table(name = "actor")
 public class ActorEntity implements Serializable {
     @Id
-    @Column("actor_id")
+    @Column(name = "actor_id")
     private Long actorId;
 
-    @Column("first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column("last_name")
+    @Column(name = "last_name")
     private String lastName;
 
     @JsonIgnore
-    @Column("last_update")
+    @Column(name = "last_update")
     private LocalDateTime lastUpdate;
 
 //    @Version

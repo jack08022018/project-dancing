@@ -14,32 +14,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Slf4j
 @Configuration
-//@EnableWebFlux
 @EnableScheduling
-@EnableConfigurationProperties({DatasourceProperties.class})
-//public class WebFluxConfig implements WebFluxConfigurer {
-public class WebFluxConfig {
-//    @Bean("httpClient")
-//    public HttpClient getHttpClient() {
-//        return HttpClient.create()
-//                .tcpConfiguration(client -> client
-//                        .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 30000)
-//                        .doOnConnected(conn -> conn
-//                                .addHandlerLast(new ReadTimeoutHandler(30))
-//                                .addHandlerLast(new WriteTimeoutHandler(30)))
-//                );
-//    }
-//
-//    @Bean("orchesWebfluxClient")
-//    public WebClient getWebClient(@Autowired HttpClient httpClient) {
-//        var connector = new ReactorClientHttpConnector(httpClient.wiretap(true));
-//        return WebClient.builder()
-//                .baseUrl("http://localhost:9498/orches")
-//                .clientConnector(connector)
-//                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-//                .build();
-//    }
-
+//@EnableConfigurationProperties({DatasourceProperties.class})
+public class AppConfig {
     @Bean(name = "customObjectMapper")
     public ObjectMapper getObjectMapper() {
         var mapper = new ObjectMapper()

@@ -14,7 +14,7 @@ Ext.define('ext.AdminClass', {
 			iconCls: 'fa fa-search btn-icon',
 			style: 'float : right;',
 			handler: function() {
-				products();
+				getClassList();
 			}
 		});
 
@@ -25,14 +25,24 @@ Ext.define('ext.AdminClass', {
 			style : 'border:1px solid #b5b8c8; border-radius:3px;',
 			layout: {
 				type: 'table',
-				columns: 3,
+				columns: 4,
 				tdAttrs: {style: 'padding: 0px 10px 0px 0px; vertical-align : top;'}
 			},
 			items: [
+			    {xtype: 'metext', width: '100%', labelWidth: 30, name: 'id', fieldLabel: 'ID',
+                    listeners: {
+                        specialkey: function (f, e) {
+                            if (e.getKey() == e.ENTER) {
+                                getClassList();
+                            }
+                        }
+                    }
+                },
 				{xtype: 'metext', width: '100%', labelWidth: 30, name: 'song', fieldLabel: 'Song',
 					listeners: {
 						specialkey: function (f, e) {
 							if (e.getKey() == e.ENTER) {
+				                getClassList();
 							}
 						}
 					}
@@ -58,25 +68,38 @@ Ext.define('ext.AdminClass', {
 			flex: 1,
 			store: mainStore,
 			margin: '5 0 0 0',
-			selModel: Ext.create('Ext.selection.CheckboxModel'),
+//			selModel: Ext.create('Ext.selection.CheckboxModel'),
 			columns: [
-				{text : 'No', width: 40, dataIndex: 'id', align: 'center', sortable: false, menuDisabled: true,
+				{text : 'No', width: 40, align: 'center', sortable: false, menuDisabled: true,
 				    renderer: function(value, metaData, record, row, col, store, gridView) {
                         return ++row;
                     }
 				},
-				{text : 'Song', minWidth: 150, flex: 1, dataIndex: 'songName', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Create Date', width: 100, dataIndex: 'createDate', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Period', width: 200, align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Time', width: 150, align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Address', width: 100, dataIndex: 'address', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'ID', width: 40, dataIndex: 'id', align: 'center', sortable: false, menuDisabled: true},
+				{text : 'Song', minWidth: 150, flex: 1, dataIndex: 'songTitle', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'Create Date', width: 100, dataIndex: 'createDate', align : 'center', sortable: false, menuDisabled: true,
+				    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return Common.dateToString(record.data.createDate);
+                    }
+				},
+				{text : 'Period', width: 170, align : 'center', sortable: false, menuDisabled: true,
+				    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return Common.dateToString(record.data.startDate) + ' ~ ' + Common.dateToString(record.data.endDate);
+                    }
+				},
+				{text : 'Time', width: 100, align : 'center', sortable: false, menuDisabled: true,
+                    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return record.data.startTime + ' ~ ' + record.data.endTime;
+                    }
+                },
+				{text : 'Address', width: 200, dataIndex: 'address', align : 'center', sortable: false, menuDisabled: true},
 				{text : 'Status', width: 70, dataIndex: 'status', align : 'center', sortable: false, menuDisabled: true},
 			],
 			listeners: {
 				cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
-					if(cellIndex != 0) {
-						rightPanel.setDisabled(false);
-					}
+                    setClassInfo(record.data);
+//					if(cellIndex != 0) {
+//					}
 				},
 			},
 		});
@@ -87,7 +110,9 @@ Ext.define('ext.AdminClass', {
 			padding: '8 10',
 			margin: '5 0 0 0',
 			handler: function() {
-				exportPdf();
+				currentInfo = {};
+				formInfo.reset();
+				rightPanel.setDisabled(false);
 			}
 		});
 
@@ -96,7 +121,7 @@ Ext.define('ext.AdminClass', {
             iconCls: 'far fa-save btn-icon',
             padding: '8 10',
             handler: function() {
-                saveClass();
+                saveClassInfo();
             }
         });
 
@@ -105,30 +130,31 @@ Ext.define('ext.AdminClass', {
 			border: false,
 			layout: 'column',
 			items: [
+			    {xtype: 'hiddenfield', name: 'id'},
 			    {xtype: 'metext', columnWidth: .5, fieldLabel: 'Song', labelWidth: 50, name: 'song', margin: '10 0 0 0'},
 				{xtype: 'medate', columnWidth: .5, fieldLabel: 'Create Date', labelWidth: 70, name: 'createDate', value: new Date(), editable: false, margin: '10 0 0 10'},
 				{xtype: 'fieldcontainer', columnWidth: 1, layout: 'hbox', labelWidth: 50, margin: '10 0 0 0', labelSeparator: '',
                     fieldLabel: 'Period' + '<span style = "color:red;">*</span>',
                     items: [
-                        {xtype: 'medate', flex: .45, name: 'start', value: new Date(new Date().getFullYear(), new Date().getMonth(), 1), allowBlank: false, editable: false,
+                        {xtype: 'medate', flex: .45, name: 'startDate', allowBlank: false, editable: false,
                             listeners: {
                                 change: function(combo, value){
                                     if(this.value != null){
-                                        getFormField(formInfo, 'end').setMinValue(this.value);
+                                        getFormField(formInfo, 'endDate').setMinValue(this.value);
                                     }
                                 }
                             }
                         },
                         {xtype: 'medisplayfield', flex: .1, value: '~', style: 'text-align: center;'},
-                        {xtype: 'medate', flex: .45, name: 'end', value: new Date(), style: 'float: right;', allowBlank: false, editable: false}
+                        {xtype: 'medate', flex: .45, name: 'endDate', style: 'float: right;', allowBlank: false, editable: false}
                     ]
                 },
                 {xtype: 'fieldcontainer', columnWidth: 1, layout: 'hbox', labelWidth: 50, margin: '5 0 0 0', labelSeparator: '',
                     fieldLabel: 'Time' + '<span style = "color:red;">*</span>',
                     items: [
-                        {xtype: 'metime', flex: .45, name: 'timeStart', allowBlank: false},
+                        {xtype: 'metime', flex: .45, name: 'startTime', allowBlank: false},
                         {xtype: 'medisplayfield', flex: .1, value: '~', style: 'text-align: center;'},
-                        {xtype: 'medate', flex: .45, name: 'timeEnd', style: 'float: right;', allowBlank: false}
+                        {xtype: 'metime', flex: .45, name: 'endTime', style: 'float: right;', allowBlank: false}
                     ]
                 },
 				{xtype: 'metext', columnWidth: .5, fieldLabel: 'Address', labelWidth: 50, name: 'address', margin: '5 0 0 0'},
@@ -182,16 +208,60 @@ Ext.define('ext.AdminClass', {
 		this.items = [leftPanel, rightPanel];
 		this.callParent(arguments);
 
-		async function saveClass() {
+		async function getClassList() {
 			try {
-				let params = {};
-				let ajaxUrl = 'api/saveClass';
-				let json = await postDataAjax(ajaxUrl, params);
-				console.log(json);
+				let params = {
+				    'id': getFormField(formSearch, 'id').getValue(),
+				    'songTitle': getFormField(formSearch, 'song').getValue(),
+				};
+				let ajaxUrl = 'api/getClassList';
+				let data = await postDataAjax(ajaxUrl, params);
+				console.log(data);
+				mainStore.loadData(data);
+				rightPanel.setDisabled(true);
 			}catch(e) {
 				handleException(e);
 			}
 		}
+
+        var currentInfo = {};
+		function setClassInfo(s) {
+            try {
+                console.log(s);
+                currentInfo = s;
+                getFormField(formInfo, 'song').setValue(s.songTitle);
+                getFormField(formInfo, 'createDate').setValue(new Date(s.createDate));
+                getFormField(formInfo, 'startDate').setValue(new Date(s.startDate));
+                getFormField(formInfo, 'endDate').setValue(new Date(s.endDate));
+                getFormField(formInfo, 'startTime').setValue(s.startTime);
+                getFormField(formInfo, 'endTime').setValue(s.endTime);
+                getFormField(formInfo, 'address').setValue(s.address);
+                getFormField(formInfo, 'status').setValue(s.status);
+				rightPanel.setDisabled(false);
+            }catch(e) {
+                handleException(e);
+            }
+        }
+
+        async function saveClassInfo() {
+            try {
+                if(!formInfo.isValid()) {
+                    throw new Error();
+                }
+                currentInfo.songTitle = getFormField(formInfo, 'song').getValue();
+                currentInfo.createDate = getFormField(formInfo, 'createDate').getValue();
+                currentInfo.startDate = getFormField(formInfo, 'startDate').getValue();
+                currentInfo.endDate = getFormField(formInfo, 'endDate').getValue();
+                currentInfo.startTime = getFormField(formInfo, 'startTime').getValue();
+                currentInfo.endTime = getFormField(formInfo, 'endTime').getValue();
+                currentInfo.address = getFormField(formInfo, 'address').getValue();
+                currentInfo.status = getFormField(formInfo, 'status').getValue();
+                let ajaxUrl = 'api/saveClassInfo';
+                await postDataAjax(ajaxUrl, currentInfo);
+            }catch(e) {
+                handleException(e);
+            }
+        }
 
 //		END
 	}

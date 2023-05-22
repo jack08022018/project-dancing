@@ -2,10 +2,8 @@ package com.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -15,36 +13,38 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Table("class_info")
+@Entity
+@Table(name = "class_info")
 public class ClassInfoEntity implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column("song_title")
+    @Column(name = "song_title")
     private String songTitle;
 
-    @Column("start_date")
+    @Column(name = "start_date")
     private LocalDateTime startDate;
 
-    @Column("end_date")
+    @Column(name = "end_date")
     private LocalDateTime endDate;
 
-    @Column("start_time")
+    @Column(name = "start_time")
     private String startTime;
 
-    @Column("end_time")
+    @Column(name = "end_time")
     private String endTime;
 
-    @Column("address")
+    @Column(name = "address")
     private String address;
 
-    @Column("status")
+    @Column(name = "status")
     private String status;
 
-    @Column("create_date")
+    @Column(name = "create_date")
     private LocalDateTime createDate;
 
-    @Column("last_update")
-    private LocalDateTime last_update;
+    @Column(name = "last_update")
+    private LocalDateTime lastUpdate;
 
 }

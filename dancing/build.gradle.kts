@@ -22,8 +22,10 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation ("org.springframework.boot:spring-boot-starter-data-r2dbc:2.7.7")
-	implementation("org.mariadb:r2dbc-mariadb:1.1.2")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("mysql:mysql-connector-java")
+//	implementation ("org.springframework.boot:spring-boot-starter-data-r2dbc:2.7.7")
+//	implementation("org.mariadb:r2dbc-mariadb:1.1.2")
 
 	implementation("org.apache.commons:commons-lang3:3.12.0")
 	implementation("com.google.code.gson:gson:2.10.1")
@@ -33,8 +35,8 @@ dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok")
 
-	implementation("org.springframework.boot:spring-boot-starter-logging:3.0.1")
-	implementation("org.springframework.boot:spring-boot-starter-log4j2:3.0.1")
+	implementation("org.springframework.boot:spring-boot-starter-logging:2.7.3")
+	implementation("org.springframework.boot:spring-boot-starter-log4j2:2.7.3")
 }
 
 configurations {

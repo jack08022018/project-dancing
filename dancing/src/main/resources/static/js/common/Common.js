@@ -12,7 +12,7 @@ Ext.define('Common', {
 			}
 			return date;
 		},
-		dateToString : function(date){
+		dateToString : function(date) {
 			var resultDate = new Date(date);
 			  
 	        year = resultDate.getFullYear();
@@ -22,7 +22,7 @@ Ext.define('Common', {
 	        	month = "0"+month;
 	        if(day < 10)
 	        	day = "0"+day;
-	        return year + "" + month + "" + day;
+	        return year + "/" + month + "/" + day;
 		},
 		isString: function(value) {
 			return typeof value === 'string' || value instanceof String;

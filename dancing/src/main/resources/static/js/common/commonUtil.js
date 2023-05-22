@@ -40,9 +40,12 @@ function getDataAjax(ajaxUrl, params) {
 //			'Authorization':'Basic xxxxxxxxxxxxx',
 		},
 		success : function(response) {
-			var data = Ext.decode(response.responseText);
-			deferred.resolve(data);
-			unMask();
+			var json = Ext.decode(response.responseText);
+            if(json.status != '00') {
+                deferred.reject({info: json});
+            }else {
+                deferred.resolve(json.data);
+            }
 		},
 		error : function(response) {
 			unMask();
@@ -69,8 +72,12 @@ function postDataAjax(ajaxUrl, params) {
 //			'Authorization':'Basic xxxxxxxxxxxxx',
 		},
 		success : function(response) {
-			var data = Ext.decode(response.responseText);
-			deferred.resolve(data);
+			var json = Ext.decode(response.responseText);
+			if(json.status != '00') {
+			    deferred.reject({info: json});
+			}else {
+			    deferred.resolve(json.data);
+            }
 			unMask();
 		},
 		error : function(response) {

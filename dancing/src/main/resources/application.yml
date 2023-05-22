@@ -16,22 +16,27 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     template-resolver-order: 1
-#  r2dbc:
-#    url: r2dbc:mariadb://localhost:3308/sakila
-#    username: root
-#    password: 123456
-#    pool:
-#      enabled: false
-
-datasource:
-  mariadb:
-    enabled: true
-    host: localhost
-    port: 3306
-    database: sakila
-    user: root
+  jpa:
+    #    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+#        dialect: org.hibernate.dialect.MariaDB103Dialect
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        #        query:
+        #          plan_cache_max_size: 1
+        #          plan_parameter_metadata_max_size: 1
+        #        generate_statistics: true
+        jdbc:
+          batch_size: 1000
+          time_zone: UTC
+        order_inserts: true
+        order_updates: true
+        use-new-id-generator-mappings: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/sakila
+    username: root
     password: 123456
-    timeout: 10
 
 logging:
   level:
@@ -41,5 +46,6 @@ logging:
     org.springframework.web.client.RestTemplate: DEBUG
     org.springframework.security: DEBUG
     org.springframework.boot.autoconfigure: INFO
-#    org.springframework.r2dbc: TRACE
-    org.springframework.r2dbc: DEBUG
+    org.hibernate.SQL: DEBUG
+    #    org.hibernate.type.descriptor.sql: trace
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
