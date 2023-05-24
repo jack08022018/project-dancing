@@ -22,7 +22,7 @@ public enum ResponseStatus {
                 .filter(s -> s.code.equals(code))
                 .findFirst()
                 .orElseGet(() -> {
-                    var status = ResponseStatus.ENUM_NOT_FOUND;
+                    ResponseStatus status = ResponseStatus.ENUM_NOT_FOUND;
                     status.code = code;
                     return status;
                 });

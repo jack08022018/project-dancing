@@ -34,7 +34,7 @@ spring:
         order_updates: true
         use-new-id-generator-mappings: true
   datasource:
-    url: jdbc:mysql://localhost:3306/sakila
+    url: jdbc:mysql://localhost:3308/sakila
     username: root
     password: 123456
 

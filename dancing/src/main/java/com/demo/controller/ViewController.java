@@ -15,28 +15,28 @@ import org.springframework.web.servlet.ModelAndView;
 public class ViewController {
     @GetMapping("/login")
     public ModelAndView login() {
-        var view = new ModelAndView();
+        ModelAndView view = new ModelAndView();
         view.setViewName("login");
         return view;
     }
 
     @GetMapping("/studentInfo")
     public ModelAndView studentInfo() {
-        var view = new ModelAndView();
+        ModelAndView view = new ModelAndView();
         view.setViewName("studentInfo");
         return view;
     }
 
     @GetMapping("/adminClass")
     public ModelAndView adminClass() {
-        var view = new ModelAndView();
+        ModelAndView view = new ModelAndView();
         view.setViewName("adminClass");
         return view;
     }
 
     @GetMapping("/adminStudent")
     public ModelAndView adminStudent() {
-        var view = new ModelAndView();
+        ModelAndView view = new ModelAndView();
         view.setViewName("adminStudent");
         return view;
     }

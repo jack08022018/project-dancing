@@ -19,7 +19,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class AppConfig {
     @Bean(name = "customObjectMapper")
     public ObjectMapper getObjectMapper() {
-        var mapper = new ObjectMapper()
+        ObjectMapper mapper = new ObjectMapper()
                 .configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true)
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         mapper.registerModule(new JavaTimeModule());

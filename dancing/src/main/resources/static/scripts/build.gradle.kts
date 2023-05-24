@@ -1,3 +1,5 @@
+package static.scripts
+
 plugins {
 	java
 	id("org.springframework.boot") version "2.7.7"

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -23,7 +24,7 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public ResultDto getClassList(ClassInfoEntity dto) {
-        var data = classInfoRepository.getClassList(dto);
+        List<ClassInfoEntity> data = classInfoRepository.getClassList(dto);
         return ResultDto.builder()
                 .status(ResponseStatus.SUCCESS.getCode())
                 .data(data)
