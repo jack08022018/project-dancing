@@ -8,29 +8,13 @@ Ext.define('ext.AdminStudent', {
 
 		let me = this;
 
-		let targetStore = Ext.widget('mestore');
-		let yearStore = Ext.widget('mestore');
-		let versionStore = Ext.widget('mestore');
-		let typeStore = Ext.widget('metreestore');
-		let statusStore = Ext.widget('mestore');
-		let levelStore = Ext.widget('metreestore');
-		let gradeStore = Ext.widget('mestore');
-
-		let targetInfoStore = Ext.widget('mestore');
-		let yearInfoStore = Ext.widget('mestore');
-		let typeInfoStore = Ext.widget('metreestore');
-		let statusInfoStore = Ext.widget('mestore');
-		let versionInfoStore = Ext.widget('mestore');
-		let yleStore = Ext.widget('mestore');
-
 		let btnSearch = Ext.widget('mebutton', {
 			text: 'Search',
 			padding: '8 10',
 			iconCls: 'fa fa-search btn-icon',
 			style: 'float : right;',
 			handler: function() {
-				products();
-				// getSignature();
+				getClassList();
 			}
 		});
 
@@ -41,42 +25,39 @@ Ext.define('ext.AdminStudent', {
 			style : 'border:1px solid #b5b8c8; border-radius:3px;',
 			layout: {
 				type: 'table',
-				columns: 3,
+				columns: 4,
 				tdAttrs: {style: 'padding: 0px 10px 0px 0px; vertical-align : top;'}
 			},
 			items: [
-				{xtype: 'mecombo', width: '100%', labelWidth: 70, name: 'target', fieldLabel: 'Test Target',
-					store: targetStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-					matchFieldWidth: false,
-					listConfig: {
-						listeners: {
-							beforeshow: function(picker) {
-//								picker.minWidth = 300;
-							}
-						}
-					}
-				},
-				{xtype: 'mecombo', width: '100%', labelWidth: 60, name: 'year', fieldLabel: 'Year',
-					store: yearStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-				},
-				{xtype: 'mecombo', width: '100%', labelWidth: 45, name: 'version', fieldLabel: 'Version',
-					store: versionStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-				},
-				{xtype: 'treecombomulti', store: levelStore, labelWidth : 70, fieldLabel : 'Level', width: '100%', treeWidth: 200, editable: false, name: 'level'},
-				{xtype: 'treecombotesttype', store: typeStore, labelWidth : 60, fieldLabel: 'Test Type', width: '100%',
-					treeWidth: 200, editable: false, name: 'type'
-				},
-				{xtype: 'mecombo', width: '100%', labelWidth: 45, name: 'status', fieldLabel: 'Status',
-					store: statusStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-				},
-				{xtype: 'metext', width: '100%', colspan: 2, labelWidth: 70, name: 'name', fieldLabel: 'Test Name',
+			    {xtype: 'metext', width: '100%', labelWidth: 30, name: 'id', fieldLabel: 'ID',
+                    listeners: {
+                        specialkey: function (f, e) {
+                            if (e.getKey() == e.ENTER) {
+                                getClassList();
+                            }
+                        }
+                    }
+                },
+				{xtype: 'metext', width: '100%', labelWidth: 30, name: 'song', fieldLabel: 'Song',
 					listeners: {
 						specialkey: function (f, e) {
 							if (e.getKey() == e.ENTER) {
+				                getClassList();
 							}
 						}
 					}
 				},
+				{xtype: 'mecombo', width: '100%', fieldLabel: 'Status', labelWidth: 50, name: 'status', margin: '0 10 0 0', allowBlank: false,
+                    store: Ext.widget('mestore', {
+                       fields: ['code', 'name'],
+                       data: [
+                            {'code': '', 'name': 'ALL'},
+                            {'code': 'OPEN', 'name': 'Open'},
+                            {'code': 'CLOSE', 'name': 'Close'},
+                       ]
+                    }),
+                    valueField: 'code', displayField: 'name', value: '', editable: false,
+                },
 				btnSearch,
 			]
 		});
@@ -87,186 +68,74 @@ Ext.define('ext.AdminStudent', {
 			flex: 1,
 			store: mainStore,
 			margin: '5 0 0 0',
-			selModel: Ext.create('Ext.selection.CheckboxModel'),
 			columns: [
-				{text : 'No', width: 40, dataIndex: 'id', align: 'center', sortable: false, menuDisabled: true},
-				{text : 'Test Name', minWidth: 150, flex: 1, dataIndex: 'description', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Test Type', minWidth: 150, flex: 1, dataIndex: 'testTypeName', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'From Date', minWidth: 100, flex: 1, dataIndex: 'startDate', align : 'center', sortable: false, menuDisabled: true,
-					renderer: function(value, metaData, record, row, col, store, gridView) {
-						return stringToDate(value);
-					}
+				{text : 'No', width: 40, align: 'center', sortable: false, menuDisabled: true,
+				    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return ++row;
+                    }
 				},
-				{text : 'Status', minWidth: 100, flex: 1, dataIndex: 'useYnName', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Year', minWidth: 100, flex: 1, dataIndex: 'yearCode', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Version', minWidth: 100, flex: 1, dataIndex: 'versionName', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Target', minWidth: 100, flex: 1, dataIndex: 'targetName', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'ID', width: 40, dataIndex: 'id', align: 'center', sortable: false, menuDisabled: true},
+				{text : 'Song', minWidth: 150, flex: 1, dataIndex: 'songTitle', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'Create Date', width: 100, dataIndex: 'createDate', align : 'center', sortable: false, menuDisabled: true,
+				    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return Common.dateToString(record.data.createDate);
+                    }
+				},
+				{text : 'Period', width: 170, align : 'center', sortable: false, menuDisabled: true,
+				    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return Common.dateToString(record.data.startDate) + ' ~ ' + Common.dateToString(record.data.endDate);
+                    }
+				},
+				{text : 'Time', width: 100, align : 'center', sortable: false, menuDisabled: true,
+                    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return record.data.startTime + ' ~ ' + record.data.endTime;
+                    }
+                },
+				{text : 'Address', width: 200, dataIndex: 'address', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'Status', width: 70, dataIndex: 'status', align : 'center', sortable: false, menuDisabled: true},
 			],
 			listeners: {
 				cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
-					if(cellIndex != 0) {
-						rightPanel.setDisabled(false);
-					}
+                    setClassInfo(record.data);
+//					if(cellIndex != 0) {
+//					}
 				},
 			},
 		});
 
-		let btnExcel = Ext.widget('mebutton', {
-			text: 'Excel',
-			iconCls: 'far fa-file-excel btn-icon',
-			padding: '8 10',
-			margin: '5 0 0 0',
-			menu: [
-				{text: 'Selected output',
-					handler: function(value) {
-					}
-				},
-				{text: 'Current Page',
-					handler: function(value) {
-					}
-				},
-				{text: 'All output',
-					handler: function(value) {
-					}
-				}
-			]
-		});
 		let btnRegister = Ext.widget('mebutton', {
 			text: 'New Registration',
 			iconCls: 'far fa-file btn-icon',
 			padding: '8 10',
 			margin: '5 0 0 0',
 			handler: function() {
-				exportPdf();
+				currentInfo = {};
+				formInfo.reset();
+				rightPanel.setDisabled(false);
 			}
 		});
 
-		let btnCopyTestFW = Ext.widget('mebutton', {
-			text: 'Copy Test Framework Information',
-			iconCls: 'far fa-copy btn-icon',
-			padding: '8 10',
-			hidden: !me.writeAuth,
-			hideMode: 'visibility',
-			handler: function() {
-			}
-		});
+		let btnSave = Ext.widget('mebutton', {
+            text: 'Save',
+            iconCls: 'far fa-save btn-icon',
+            padding: '8 10',
+            handler: function() {
+                saveClassInfo();
+            }
+        });
+
 		let formInfo = Ext.create('Ext.form.Panel', {
 			width: '100%',
 			border: false,
 			layout: 'column',
 			items: [
-				{xtype: 'mecombo', columnWidth: .25, fieldLabel: 'Test Target', labelWidth: 70, name: 'target', allowBlank: false,
-					store: targetInfoStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-				},
-				{xtype: 'mecombo', columnWidth: .25, fieldLabel: 'Test Status', labelWidth: 70, name: 'status', margin: '0 0 0 10', allowBlank: false,
-					store: statusInfoStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-				},
-				{xtype: 'mecombo', columnWidth: .25, fieldLabel: 'Year', labelWidth: 40, name: 'year', margin: '0 0 0 10', allowBlank: false, style: 'float: right;',
-					store: yearInfoStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-				},
-				{xtype: 'mecombo', columnWidth: .25, fieldLabel: 'Version', labelWidth: 55, name: 'version', margin: '0 0 0 10', allowBlank: false,
-					store: versionInfoStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-				},
-				{xtype: 'treecombotesttype', columnWidth: .25, fieldLabel: 'Test Type', labelWidth: 70, name: 'type', margin: '10 0 0 0', allowBlank: false,
-					store: typeInfoStore, editable: false, rootVisibleCustom: false,
-					select: function(value) {
-						let testType = typeInfoStore.findNode('id', value).data;
-						getFormField(formInfo, 'yleLevel').setDisabled(!isYLE(testType.treeId));
-					}
-				},
-				{xtype: 'mecombo', columnWidth: .25, fieldLabel: 'YLE Level', labelWidth: 70, name: 'yleLevel', margin: '10 0 0 10', allowBlank: false,
-					store: yleStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-				},
-				{xtype: 'fieldcontainer', columnWidth: .5, layout: 'hbox', labelWidth: 55, margin: '10 0 0 10', labelSeparator: '',
-					fieldLabel: 'Period' + '<span style = "color:red;">*</span>',
-					items: [
-						{xtype: 'medate', flex: .45, name: 'start', value: new Date(new Date().getFullYear(), new Date().getMonth(), 1), allowBlank: false,
-							listeners: {
-								change: function(combo, value){
-									if(this.value != null){
-										getFormField(formInfo, 'end').setMinValue(this.value);
-									}
-								}
-							}
-						},
-						{xtype: 'medisplayfield', flex: .1, value: '~', style: 'text-align: center;'},
-						{xtype: 'medate', flex: .45, name: 'end', value: new Date(), style: 'float: right;', allowBlank: false}
-					]
-				},
-				{xtype: 'fieldcontainer', columnWidth: 1, layout: 'hbox', fieldLabel: ' ', labelWidth: 70, labelSeparator: '',
-					items: [
-						btnCopyTestFW
-					]
-				},
-				{xtype: 'medisplayfield', columnWidth: .5, fieldLabel: 'Test Code', labelWidth: 70, name: 'code', margin: '10 0 0 0', readOnly: true},
-				{xtype: 'mecombo', columnWidth: .5, fieldLabel: 'Grade', labelWidth: 55, name: 'grade', margin: '10 0 0 10', multiSelect: true,
-					store: gradeStore, valueField: 'detailCode', displayField: 'codeName', queryMode: 'local', editable: false,
-					triggers : {
-						clear : {
-							cls : 'x-form-clear-trigger', weight: 1,
-							handler : function() {
-								this.setValue();
-							}
-						}
-					},
-					listConfig: {
-						tpl: Ext.create('Ext.XTemplate',
-							'<li class="comboboxMulti">',
-							'<tpl for=".">',
-							'<div class="boundList x-boundlist-item" style="background:none;border:none;">',
-							'<span class="checkbox" style="display: inline-block; margin-right: 5px;" value={detailCode}></span>{codeName}',
-							'</div>',
-							'</tpl>',
-							'</li>'
-						)
-					},
-					listeners: {
-						afterrender: function() {
-							let tree = this;
-							let tooltip = {
-								anchor: 'top',
-								trackMouse: true,
-								html: '',
-								listeners : {
-									beforeshow: function updateTipBody(tip) {
-										tip.update(tree.rawValue);
-									}
-								}
-							}
-							Ext.create('Ext.tip.ToolTip', Ext.applyIf(tooltip, {target: this.getEl()}));
-						}
-					}
-				},
-				{xtype: 'metext', columnWidth: 1, fieldLabel: 'Test Name', labelWidth: 70, name: 'name', margin: '10 0 0 0', allowBlank: false},
-				{xtype: 'metext', columnWidth: 1, labelWidth: 70, name: 'applyStats', fieldLabel: 'Apply Stats', editable: false, margin: '10 0 0 0',
-					triggers: {
-						clear: {
-							cls: 'x-form-clear-trigger', hidden: true,
-							handler: function() {
-								this.reset();
-								getFormField(formInfo, 'applyStats').reset();
-								getFormField(formInfo, 'applyStats').applyStatsCodeList = '';
-								this.getTriggers().clear.hide();
-							}
-						},
-						search: {
-							cls: 'x-form-search-trigger',
-							handler: function() {
-								if(!me.writeAuth) return;
-							}
-						}
-					},
-					listeners: {
-						change: function() {
-							if(this.value != '') {
-								this.getTriggers().clear.show();
-							}else {
-								this.getTriggers().clear.hide();
-							}
-						}
-					}
-				},
-				{xtype: 'mearea', columnWidth: 1, fieldLabel: 'Note', labelWidth: 70, name: 'note', margin: '10 0 0 0'}
+			    {xtype: 'metext', columnWidth: .5, fieldLabel: 'Name', labelWidth: 50, name: 'name', allowBlank: false, margin: '5 0 0 0'},
+				{xtype: 'medate', columnWidth: .5, fieldLabel: 'Birthday', labelWidth: 55, name: 'birthday', editable: false, margin: '5 0 0 10'},
+				{xtype: 'mephone', columnWidth: .5, fieldLabel: 'Phone', labelWidth: 50, name: 'phone', allowBlank: false, margin: '5 0 0 0'},
+				{xtype: 'metext', columnWidth: .5, fieldLabel: 'Address', labelWidth: 55, name: 'address', margin: '5 0 0 10'},
+				{xtype: 'container', layout: 'hbox', columnWidth: 1, margin: '5 0 0 0',
+                    items: [{xtype: 'tbfill'}, btnSave]
+                },
 			]
 		});
 
@@ -298,59 +167,66 @@ Ext.define('ext.AdminStudent', {
 			autoScroll: true,
 			items: [
 				formInfo,
-				{xtype: 'multifilefield', fieldLabel: 'Photo', buttonText: 'Select Photo...',
-					listeners: {
-						change: function(field, fileName) {
-							// fixSubtite(field, fileName);
-							readFileName(field, fileName);
-						}
-					}
-				},
 			],
 		});
 
 		this.items = [leftPanel, rightPanel];
 		this.callParent(arguments);
 
-		async function products() {
+		async function getClassList() {
 			try {
 				let params = {
-					"currentPage": 0,
-					"pageSize": 2
+				    'id': getFormField(formSearch, 'id').getValue(),
+				    'songTitle': getFormField(formSearch, 'song').getValue(),
 				};
-				let ajaxUrl = 'api/products';
-				let json = await getDataAjax(ajaxUrl, params);
-				console.log(json);
-				mainStore.loadData(json.content);
+				let ajaxUrl = 'api/getClassList';
+				let data = await postDataAjax(ajaxUrl, params);
+				console.log(data);
+				mainStore.loadData(data);
+				rightPanel.setDisabled(true);
 			}catch(e) {
 				handleException(e);
 			}
 		}
 
-		function exportPdf() {
-			var form = Ext.create('Ext.form.Panel', {
-				standardSubmit: true,
-				url: CONTEXT_PATH + 'api/exportPdf',
-				method: 'GET'
-			});
-			form.submit({
-				target: '_blank',
-			});
-		}
+        var currentInfo = {};
+		function setClassInfo(s) {
+            try {
+                console.log(s);
+                currentInfo = s;
+                getFormField(formInfo, 'song').setValue(s.songTitle);
+                getFormField(formInfo, 'createDate').setValue(new Date(s.createDate));
+                getFormField(formInfo, 'startDate').setValue(new Date(s.startDate));
+                getFormField(formInfo, 'endDate').setValue(new Date(s.endDate));
+                getFormField(formInfo, 'startTime').setValue(s.startTime);
+                getFormField(formInfo, 'endTime').setValue(s.endTime);
+                getFormField(formInfo, 'address').setValue(s.address);
+                getFormField(formInfo, 'status').setValue(s.status);
+				rightPanel.setDisabled(false);
+            }catch(e) {
+                handleException(e);
+            }
+        }
 
-		function getSignature() {
-			let body = {
-				"amount":37400000,
-				"payment_reference_id":"NEW202108250000",
-			};
-			body = JSON.stringify(body);
-			console.log(body)
-//			body = '{"request_id":"e7271533-898d-46a9-bef6-e12b12f4bba3","amount":5000000,"currency":"VND","merchant_ext_id":"Pru_012345","store_ext_id":"Pru_01","payment_reference_id":"NEW202108250001"}';
-// 			body = body.replaceAll('"', '\\"');
-			let hash = CryptoJS.HmacSHA256(body, '1912010b01904df08e47dc6e2907df2f')
-			let sig = CryptoJS.enc.Base64.stringify(hash).replace(/\n+$/, '')
-			console.log(sig)
-		}
+        async function saveClassInfo() {
+            try {
+                if(!formInfo.isValid()) {
+                    throw new Error();
+                }
+                currentInfo.songTitle = getFormField(formInfo, 'song').getValue();
+                currentInfo.createDate = getFormField(formInfo, 'createDate').getValue();
+                currentInfo.startDate = getFormField(formInfo, 'startDate').getValue();
+                currentInfo.endDate = getFormField(formInfo, 'endDate').getValue();
+                currentInfo.startTime = getFormField(formInfo, 'startTime').getValue();
+                currentInfo.endTime = getFormField(formInfo, 'endTime').getValue();
+                currentInfo.address = getFormField(formInfo, 'address').getValue();
+                currentInfo.status = getFormField(formInfo, 'status').getValue();
+                let ajaxUrl = 'api/saveClassInfo';
+                await postDataAjax(ajaxUrl, currentInfo);
+            }catch(e) {
+                handleException(e);
+            }
+        }
 
 //		END
 	}
