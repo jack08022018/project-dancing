@@ -9,12 +9,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -63,6 +65,33 @@ public class CommonUtils {
         if(result == null) {
             throw new Exception("Property " + key + " null");
         }
+        return result;
+    }
+
+//    public Date stringToDate(String date, String format) {
+//        try {
+//            return new SimpleDateFormat(format).parse(date);
+//        } catch (ParseException e) {
+//            return null;
+//        }
+//    }
+//
+    public String dateToString(Date date, String pattern) {
+        if (date == null) {
+            return null;
+        }
+        SimpleDateFormat format = new SimpleDateFormat(pattern);
+        return format.format(date);
+    }
+
+    public Map<String, String> getSppSignature(String params, String secretKey) throws Exception {
+        Mac mac = Mac.getInstance("HmacSHA256");
+        mac.init(new SecretKeySpec(secretKey.getBytes(), "HmacSHA256"));
+        byte[] hash = mac.doFinal(params.getBytes());
+        String signature = Base64.getEncoder().encodeToString(hash);
+        Map<String, String> result = new HashMap<>();
+        result.put("params", params);
+        result.put("signature", signature);
         return result;
     }
 }

@@ -1,8 +1,15 @@
 package com.demo.config.jwt.payload;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Builder
 public class LoginResponse {
-    String accessToken;
-    String issuedAt;
-    String expiration;
-    String tokenType = "Bearer";
+    private String accessToken;
+    private String issuedAt;
+    private String expiration;
+    private String tokenType = "Bearer";
 }
