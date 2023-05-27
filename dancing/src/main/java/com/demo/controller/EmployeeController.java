@@ -7,8 +7,6 @@ import com.demo.entity.UserInfoEntity;
 import com.demo.service.ApiService;
 import com.demo.utils.CommonUtils;
 import com.demo.utils.ExcuteApi;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +22,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmployeeController {
     final ApiService apiService;
-    final Gson gson;
-    final ObjectMapper customObjectMapper;
     final CommonUtils commonUtils;
 
     @PostMapping("/getClassList")

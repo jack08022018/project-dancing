@@ -5,13 +5,6 @@ import com.demo.config.jwt.JwtUtils;
 import com.demo.config.jwt.payload.LoginRequest;
 import com.demo.config.jwt.payload.LoginResponse;
 import com.demo.config.jwt.service.UserDetailsImpl;
-import com.demo.dto.ResultDto;
-import com.demo.entity.ClassInfoEntity;
-import com.demo.service.ApiService;
-import com.demo.utils.CommonUtils;
-import com.demo.utils.ExcuteApi;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,10 +21,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 public class LoginController {
-    final ApiService apiService;
-    final Gson gson;
-    final ObjectMapper customObjectMapper;
-    final CommonUtils commonUtils;
     final AuthenticationManager authenticationManager;
     final JwtUtils jwtUtils;
     final PasswordEncoder passwordEncoder;
