@@ -1,7 +1,7 @@
 package com.demo.config.jwt.service;
 
-import com.demo.config.jwt.user.UserEntity;
-import com.demo.config.jwt.user.UserRepository;
+import com.demo.entity.UserEntity;
+import com.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.context.SecurityContextHolder;

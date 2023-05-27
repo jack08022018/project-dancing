@@ -1,7 +1,7 @@
 package com.demo.config.jwt.service;
 
-import com.demo.config.jwt.user.UserEntity;
-import com.demo.config.jwt.user.UserRepository;
+import com.demo.entity.UserEntity;
+import com.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     final UserRepository userRepository;
 
     @Override
-    @Transactional
+//    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByUsername(username);
         if (user == null) {

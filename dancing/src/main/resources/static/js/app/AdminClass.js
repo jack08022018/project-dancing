@@ -214,10 +214,10 @@ Ext.define('ext.AdminClass', {
 				    'id': getFormField(formSearch, 'id').getValue(),
 				    'songTitle': getFormField(formSearch, 'song').getValue(),
 				};
-				let ajaxUrl = 'api/getClassList';
-				let data = await postDataAjax(ajaxUrl, params);
-				console.log(data);
-				mainStore.loadData(data);
+				let ajaxUrl = 'employee/getClassList';
+				let json = await postDataAjax(ajaxUrl, params);
+				console.log(json);
+				mainStore.loadData(json.data);
 				rightPanel.setDisabled(true);
 			}catch(e) {
 				handleException(e);
@@ -256,8 +256,9 @@ Ext.define('ext.AdminClass', {
                 currentInfo.endTime = getFormField(formInfo, 'endTime').getValue();
                 currentInfo.address = getFormField(formInfo, 'address').getValue();
                 currentInfo.status = getFormField(formInfo, 'status').getValue();
-                let ajaxUrl = 'api/saveClassInfo';
+                let ajaxUrl = 'admin/saveClassInfo';
                 await postDataAjax(ajaxUrl, currentInfo);
+                showMessageSaveSuccess();
             }catch(e) {
                 handleException(e);
             }

@@ -1,9 +1,12 @@
 package com.demo.service;
 
-import com.demo.dto.ResultDto;
 import com.demo.entity.ClassInfoEntity;
+import com.demo.entity.UserInfoEntity;
+
+import java.util.List;
 
 public interface ApiService {
-    ResultDto getClassList(ClassInfoEntity dto);
-    ResultDto saveClass(ClassInfoEntity dto);
+    List<ClassInfoEntity> getClassList(ClassInfoEntity dto);
+    boolean saveClass(ClassInfoEntity dto);
+    boolean saveStudent(UserInfoEntity dto) throws Exception;
 }

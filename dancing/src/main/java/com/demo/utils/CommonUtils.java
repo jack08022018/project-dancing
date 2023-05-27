@@ -30,7 +30,10 @@ public class CommonUtils {
 
     public ResultDto handleApi(ExcuteApi excuteApi) {
         try {
-            return excuteApi.apply();
+            return ResultDto.builder()
+                    .status(ResponseStatus.SUCCESS.getCode())
+                    .data(excuteApi.apply())
+                    .build();
         }catch (CommonException e) {
             log.error("CommonExceptionHandle: " + e.getMessage(), e);
             return ResultDto.builder()

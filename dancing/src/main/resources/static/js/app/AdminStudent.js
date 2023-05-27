@@ -29,7 +29,7 @@ Ext.define('ext.AdminStudent', {
 				tdAttrs: {style: 'padding: 0px 10px 0px 0px; vertical-align : top;'}
 			},
 			items: [
-			    {xtype: 'metext', width: '100%', labelWidth: 30, name: 'id', fieldLabel: 'ID',
+			    {xtype: 'metext', width: '100%', labelWidth: 35, name: 'name', fieldLabel: 'Name',
                     listeners: {
                         specialkey: function (f, e) {
                             if (e.getKey() == e.ENTER) {
@@ -38,7 +38,7 @@ Ext.define('ext.AdminStudent', {
                         }
                     }
                 },
-				{xtype: 'metext', width: '100%', labelWidth: 30, name: 'song', fieldLabel: 'Song',
+				{xtype: 'metext', width: '100%', labelWidth: 40, name: 'mobile', fieldLabel: 'Mobile',
 					listeners: {
 						specialkey: function (f, e) {
 							if (e.getKey() == e.ENTER) {
@@ -47,16 +47,14 @@ Ext.define('ext.AdminStudent', {
 						}
 					}
 				},
-				{xtype: 'mecombo', width: '100%', fieldLabel: 'Status', labelWidth: 50, name: 'status', margin: '0 10 0 0', allowBlank: false,
-                    store: Ext.widget('mestore', {
-                       fields: ['code', 'name'],
-                       data: [
-                            {'code': '', 'name': 'ALL'},
-                            {'code': 'OPEN', 'name': 'Open'},
-                            {'code': 'CLOSE', 'name': 'Close'},
-                       ]
-                    }),
-                    valueField: 'code', displayField: 'name', value: '', editable: false,
+				{xtype: 'metext', width: '100%', labelWidth: 30, name: 'class', decimalPrecision: 0, minValue: 0, fieldLabel: 'Class',
+                    listeners: {
+                        specialkey: function (f, e) {
+                            if (e.getKey() == e.ENTER) {
+                                getClassList();
+                            }
+                        }
+                    }
                 },
 				btnSearch,
 			]
@@ -74,31 +72,13 @@ Ext.define('ext.AdminStudent', {
                         return ++row;
                     }
 				},
-				{text : 'ID', width: 40, dataIndex: 'id', align: 'center', sortable: false, menuDisabled: true},
-				{text : 'Song', minWidth: 150, flex: 1, dataIndex: 'songTitle', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Create Date', width: 100, dataIndex: 'createDate', align : 'center', sortable: false, menuDisabled: true,
-				    renderer: function(value, metaData, record, row, col, store, gridView) {
-                        return Common.dateToString(record.data.createDate);
-                    }
-				},
-				{text : 'Period', width: 170, align : 'center', sortable: false, menuDisabled: true,
-				    renderer: function(value, metaData, record, row, col, store, gridView) {
-                        return Common.dateToString(record.data.startDate) + ' ~ ' + Common.dateToString(record.data.endDate);
-                    }
-				},
-				{text : 'Time', width: 100, align : 'center', sortable: false, menuDisabled: true,
-                    renderer: function(value, metaData, record, row, col, store, gridView) {
-                        return record.data.startTime + ' ~ ' + record.data.endTime;
-                    }
-                },
-				{text : 'Address', width: 200, dataIndex: 'address', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Status', width: 70, dataIndex: 'status', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'Name', minWidth: 150, flex: 1, dataIndex: 'name', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'Mobile', width: 120, dataIndex: 'mobile', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'Class', width: 150, dataIndex: '', align : 'center', sortable: false, menuDisabled: true},
 			],
 			listeners: {
 				cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
-                    setClassInfo(record.data);
-//					if(cellIndex != 0) {
-//					}
+//                    setClassInfo(record.data);
 				},
 			},
 		});
@@ -130,10 +110,13 @@ Ext.define('ext.AdminStudent', {
 			layout: 'column',
 			items: [
 			    {xtype: 'metext', columnWidth: .5, fieldLabel: 'Name', labelWidth: 50, name: 'name', allowBlank: false, margin: '5 0 0 0'},
-				{xtype: 'medate', columnWidth: .5, fieldLabel: 'Birthday', labelWidth: 55, name: 'birthday', editable: false, margin: '5 0 0 10'},
-				{xtype: 'mephone', columnWidth: .5, fieldLabel: 'Phone', labelWidth: 50, name: 'phone', allowBlank: false, margin: '5 0 0 0'},
+				{xtype: 'menumber', columnWidth: .5, fieldLabel: 'Age', labelWidth: 55, name: 'age', decimalPrecision: 0, minValue: 0, maxValue: 100, margin: '5 0 0 10'},
+				{xtype: 'mephone', columnWidth: .5, fieldLabel: 'Mobile', labelWidth: 50, name: 'mobile', allowBlank: false, margin: '5 0 0 0'},
 				{xtype: 'metext', columnWidth: .5, fieldLabel: 'Address', labelWidth: 55, name: 'address', margin: '5 0 0 10'},
-				{xtype: 'container', layout: 'hbox', columnWidth: 1, margin: '5 0 0 0',
+				{xtype: 'metext', columnWidth: .5, fieldLabel: 'Facebook', labelWidth: 50, name: 'facebook', allowBlank: false, margin: '5 0 0 0'},
+                {xtype: 'metext', columnWidth: .5, fieldLabel: 'Email', labelWidth: 55, name: 'email', margin: '5 0 0 10'},
+                {xtype: 'mearea', columnWidth: 1, fieldLabel: 'Notes', labelWidth: 50, name: 'notes', margin: '5 0 0 0'},
+                {xtype: 'container', layout: 'hbox', columnWidth: 1, margin: '5 0 0 0',
                     items: [{xtype: 'tbfill'}, btnSave]
                 },
 			]

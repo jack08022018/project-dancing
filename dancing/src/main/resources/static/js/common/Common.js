@@ -1,5 +1,11 @@
 Ext.define('Common', {
 	statics : {
+	    replaceAt(string, index, replacement) {
+          if (index >= string.length) {
+            return string; // index out of bounds, return the original string
+          }
+          return string.substr(0, index) + replacement + string.substr(index + replacement.length);
+        },
 		stringTodate : function(dateString){
 			dateString = Ext.String.trim(dateString);
 			var date;

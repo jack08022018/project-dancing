@@ -10,8 +10,8 @@ function handleException(e) {
 function showMessageSaveSuccess(){
 	Ext.MessageBox.show({
 		cls : 'messageBoxTextCenter',
-		title : 'KIS',
-		msg :'Saved data successfully',
+		title : 'Emira',
+		msg : 'Saved data successfully',
 		buttons : Ext.MessageBox.YES,
 		icon : Ext.MessageBox.INFO
 	});
@@ -20,13 +20,13 @@ function showMessageSaveSuccess(){
 function showMessageBoxError(message){
 	Ext.MessageBox.show({
 		cls : 'messageBoxTextCenter',
-		title : 'KIS',
+		title : 'Emira',
 		msg : message,
 		buttons : Ext.MessageBox.YES,
 		icon : Ext.MessageBox.ERROR
 	});
 }
-
+var token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4NTE4MTI4MywiZXhwIjoxNjg1MjY3NjgzfQ.7kNCtz5NMOXnLCbs9NmxjejtgvCGj_O5R6TB8J_IKfoS8k9LUSDS-dd0z2FY-aUVIzUv2NQ24RMdFbC1qLqTvQ';
 function getDataAjax(ajaxUrl, params) {
 	let deferred = new Ext.Deferred();
 	mask();
@@ -37,14 +37,15 @@ function getDataAjax(ajaxUrl, params) {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
-//			'Authorization':'Basic xxxxxxxxxxxxx',
+            'Authorization': 'Bearer ' + token,
+
 		},
 		success : function(response) {
 			var json = Ext.decode(response.responseText);
             if(json.status != '00') {
                 deferred.reject({info: json});
             }else {
-                deferred.resolve(json.data);
+                deferred.resolve(json);
             }
 		},
 		error : function(response) {
@@ -69,14 +70,14 @@ function postDataAjax(ajaxUrl, params) {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-//			'Authorization':'Basic xxxxxxxxxxxxx',
+			'Authorization': 'Bearer ' + token,
 		},
 		success : function(response) {
 			var json = Ext.decode(response.responseText);
 			if(json.status != '00') {
 			    deferred.reject({info: json});
 			}else {
-			    deferred.resolve(json.data);
+			    deferred.resolve(json);
             }
 			unMask();
 		},

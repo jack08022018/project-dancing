@@ -2,9 +2,10 @@ package com.demo.config;
 
 import com.demo.config.jwt.AuthEntryPointJwt;
 import com.demo.config.jwt.AuthTokenFilter;
+import com.demo.config.jwt.JwtUtils;
 import com.demo.config.jwt.service.UserDetailsServiceImpl;
+import com.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,20 +13,27 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
+//@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     final UserDetailsServiceImpl userDetailsService;
     final AuthEntryPointJwt unauthorizedHandler;
+    final UserRepository userRepository;
+    final JwtUtils jwtUtils;
+
+//    @Bean
+//    public AuditorAware<UserEntity> auditorProvider() {
+//        return new AuditorAwareImpl(userRepository);
+//    }
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
-        return new AuthTokenFilter();
+        return new AuthTokenFilter(jwtUtils, userDetailsService);
     }
 
     @Override
@@ -47,15 +55,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
+        http.cors()
+                .and()
+                .csrf().disable()
+                .httpBasic().disable()
+                .formLogin().disable()
+                .logout().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/api/login").permitAll()
-                // .antMatchers("/api/rest").permitAll()
-                .antMatchers("/api/admin").hasRole("ADMIN")
-                .antMatchers("/api/user").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/css/**","/js/**","/extjs/**","/images/**").permitAll()
+                .antMatchers("/login", "/view/*").permitAll()
+                .antMatchers("/encode", "/admin/*").hasAnyAuthority("ADMIN")
+                .antMatchers("/employee/*").hasAnyAuthority("ADMIN", "EMPLOYEE")
                 .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring()
+//            .antMatchers("/resources/**"); // Permit access to resources
+//    }
 }

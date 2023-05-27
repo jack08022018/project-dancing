@@ -269,7 +269,7 @@ Ext.define('component.mePhone', {
         	if(e.getKey() == e.BACKSPACE && lastValue.length > 0) {
             	if(lastValue.charAt(e.target.selectionEnd - 1) == '-') {
             		var position = e.target.selectionEnd;
-            		lastValue = lastValue.replaceAt(position - 2, '-');
+            		lastValue = Common.replaceAt(lastValue, position - 2, '-');
             		f.setValue(lastValue);
             		f.selectText(position - 2, position - 2);
             		e.preventDefault();
@@ -333,7 +333,7 @@ Ext.define('component.meTime', {
         	if(e.getKey() == e.BACKSPACE && lastValue.length > 0) {
             	if(lastValue.charAt(e.target.selectionEnd - 1) == ':') {
             		var position = e.target.selectionEnd;
-            		lastValue = lastValue.replaceAt(position - 2, '-');
+            		lastValue = Common.replaceAt(lastValue, position - 2, '-');
             		f.setValue(lastValue);
             		f.selectText(position - 2, position - 2);
             		e.preventDefault();

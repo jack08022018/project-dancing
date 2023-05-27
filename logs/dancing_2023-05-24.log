@@ -309,7 +309,7 @@ Caused by: java.net.ConnectException: Connection refused
 2023-05-24 20:08:11.569 DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
 2023-05-24 20:08:11.570 INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
 2023-05-24 20:08:11.575 DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/dancing/api/getClassList", parameters={}
-2023-05-24 20:08:11.579 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.demo.controller.DancingController#getData(ClassInfoEntity)
+2023-05-24 20:08:11.579 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.demo.controller.EmployeeController#getData(ClassInfoEntity)
 2023-05-24 20:08:11.617 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.demo.entity.ClassInfoEntity@12ee570b]
 2023-05-24 20:08:11.675 DEBUG org.hibernate.SQL - 
     SELECT
@@ -391,7 +391,7 @@ Caused by: java.net.ConnectException: Connection refused
 2023-05-24 20:08:37.647 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/themes-testcenter/images/loadmask/loading.gif", parameters={}
 2023-05-24 20:08:37.649 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
 2023-05-24 20:08:37.651 DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/dancing/api/getClassList", parameters={}
-2023-05-24 20:08:37.652 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.demo.controller.DancingController#getData(ClassInfoEntity)
+2023-05-24 20:08:37.652 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.demo.controller.EmployeeController#getData(ClassInfoEntity)
 2023-05-24 20:08:37.652 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
 2023-05-24 20:08:37.654 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.demo.entity.ClassInfoEntity@371bfe71]
 2023-05-24 20:08:37.657 DEBUG org.hibernate.SQL - 

@@ -1,12 +1,12 @@
 package com.demo.config.jwt.payload;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class LoginRequest {
     private String username;
     private String password;
