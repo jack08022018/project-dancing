@@ -14,7 +14,7 @@ Ext.define('ext.AdminStudent', {
 			iconCls: 'fa fa-search btn-icon',
 			style: 'float : right;',
 			handler: function() {
-				getClassList();
+				getStudentList();
 			}
 		});
 
@@ -100,7 +100,7 @@ Ext.define('ext.AdminStudent', {
             iconCls: 'far fa-save btn-icon',
             padding: '8 10',
             handler: function() {
-                saveClassInfo();
+                saveStudentInfo();
             }
         });
 
@@ -156,13 +156,13 @@ Ext.define('ext.AdminStudent', {
 		this.items = [leftPanel, rightPanel];
 		this.callParent(arguments);
 
-		async function getClassList() {
+		async function getStudentList() {
 			try {
 				let params = {
-				    'id': getFormField(formSearch, 'id').getValue(),
-				    'songTitle': getFormField(formSearch, 'song').getValue(),
+				    'name': getFormField(formSearch, 'name').getValue().trim(),
+				    'mobile': getFormField(formSearch, 'mobile').getValue().trim(),
 				};
-				let ajaxUrl = 'api/getClassList';
+				let ajaxUrl = 'api/getStudentList';
 				let data = await postDataAjax(ajaxUrl, params);
 				console.log(data);
 				mainStore.loadData(data);
@@ -173,7 +173,7 @@ Ext.define('ext.AdminStudent', {
 		}
 
         var currentInfo = {};
-		function setClassInfo(s) {
+		function setStudentInfo(s) {
             try {
                 console.log(s);
                 currentInfo = s;
@@ -191,7 +191,7 @@ Ext.define('ext.AdminStudent', {
             }
         }
 
-        async function saveClassInfo() {
+        async function saveStudentInfo() {
             try {
                 if(!formInfo.isValid()) {
                     throw new Error();

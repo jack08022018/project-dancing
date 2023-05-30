@@ -2,13 +2,15 @@ package com.demo.controller;
 
 
 import com.demo.dto.ResultDto;
+import com.demo.dto.StudentInfo;
 import com.demo.entity.ClassInfoEntity;
-import com.demo.entity.UserInfoEntity;
+import com.demo.entity.StudentInfoEntity;
 import com.demo.service.ApiService;
 import com.demo.utils.CommonUtils;
 import com.demo.utils.ExcuteApi;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,14 +27,26 @@ public class EmployeeController {
     final CommonUtils commonUtils;
 
     @PostMapping("/getClassList")
-    public ResultDto getData(@RequestBody ClassInfoEntity dto) {
+    public ResultDto<List<ClassInfoEntity>> getClassList(@RequestBody ClassInfoEntity dto) {
         ExcuteApi<List<ClassInfoEntity>> excuteApi = () -> apiService.getClassList(dto);
         return commonUtils.handleApi(excuteApi);
     }
 
-    @PostMapping("/getClassList")
-    public ResultDto saveStudent(@RequestBody UserInfoEntity dto) {
+    @PostMapping("/getStudentList")
+    public ResultDto<List<StudentInfo>> getClassList(@RequestBody StudentInfoEntity dto) {
+        ExcuteApi<List<StudentInfo>> excuteApi = () -> apiService.getStudentList(dto);
+        return commonUtils.handleApi(excuteApi);
+    }
+
+    @PostMapping("/saveStudent")
+    public ResultDto<Boolean> saveStudent(@RequestBody StudentInfoEntity dto) {
         ExcuteApi<Boolean> excuteApi = () -> apiService.saveStudent(dto);
+        return commonUtils.handleApi(excuteApi);
+    }
+
+    @PostMapping("/getStudentInfo")
+    public ResultDto<ModelMap> getStudentInfo(@RequestBody StudentInfoEntity dto) {
+        ExcuteApi<ModelMap> excuteApi = () -> apiService.getStudentInfo(dto);
         return commonUtils.handleApi(excuteApi);
     }
 

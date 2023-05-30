@@ -26,7 +26,7 @@ function showMessageBoxError(message){
 		icon : Ext.MessageBox.ERROR
 	});
 }
-var token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4NTE4MTI4MywiZXhwIjoxNjg1MjY3NjgzfQ.7kNCtz5NMOXnLCbs9NmxjejtgvCGj_O5R6TB8J_IKfoS8k9LUSDS-dd0z2FY-aUVIzUv2NQ24RMdFbC1qLqTvQ';
+var token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4NTM3NTQ0OSwiZXhwIjoxNjg1NDYxODQ5fQ.6cflbE6qhbRsBZITd2_6SCFrQIHBXlLyrPcMwRzM6aE3HUS6ehKEIVxFtToidvCipYJvj1ca0x3opFbD0CslYg';
 function getDataAjax(ajaxUrl, params) {
 	let deferred = new Ext.Deferred();
 	mask();

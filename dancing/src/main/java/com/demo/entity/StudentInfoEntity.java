@@ -1,13 +1,11 @@
 package com.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -15,8 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user_info")
-public class UserInfoEntity implements Serializable {
+@Table(name = "student_info")
+public class StudentInfoEntity implements Serializable {
     @Id
     @Column(nullable = false)
     private Integer id;

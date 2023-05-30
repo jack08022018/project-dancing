@@ -28,24 +28,21 @@ public class CommonUtils {
     final Gson gson;
     final Environment env;
 
-    public ResultDto handleApi(ExcuteApi excuteApi) {
+    public <T> ResultDto<T> handleApi(ExcuteApi<T> excuteApi) {
         try {
-            return ResultDto.builder()
-                    .status(ResponseStatus.SUCCESS.getCode())
-                    .data(excuteApi.apply())
-                    .build();
+            return new ResultDto<T>()
+                    .setStatus(ResponseStatus.SUCCESS.getCode())
+                    .setData(excuteApi.apply());
         }catch (CommonException e) {
             log.error("CommonExceptionHandle: " + e.getMessage(), e);
-            return ResultDto.builder()
-                    .status(e.getStatus())
-                    .message(e.getMessage())
-                    .build();
+            return new ResultDto<T>()
+                    .setStatus(ResponseStatus.ERROR.getCode())
+                    .setMessage(e.getMessage());
         }catch (Exception e) {
             log.error("ExceptionHandle: " + e.getMessage(), e);
-            return ResultDto.builder()
-                    .status(ResponseStatus.ERROR.getCode())
-                    .message(e.getMessage())
-                    .build();
+            return new ResultDto<T>()
+                    .setStatus(ResponseStatus.SUCCESS.getCode())
+                    .setMessage(e.getMessage());
         }
     }
 
