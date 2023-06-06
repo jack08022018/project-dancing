@@ -37,6 +37,9 @@ public class StudentInfoEntity implements Serializable {
     @Column
     private Integer age;
 
+    @Column
+    private String notes;
+
     @Column(name = "create_date")
     private LocalDateTime createDate;
 

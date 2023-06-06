@@ -22,4 +22,9 @@ public interface StudentInfoRepository extends JpaRepository<StudentInfoEntity, 
             "           AND (:#{#params.mobile} IS NULL OR A.mobile LIKE '%'||:#{#params.mobile}||'%')", nativeQuery = true)
     List<StudentInfo> getStudentList(@Param("params") StudentInfoEntity params);
 
+    @Query(value = "SELECT A.name, A.mobile" +
+            "       FROM student_info A" +
+            "       WHERE A.mobile = :mobile", nativeQuery = true)
+    StudentInfo getStudentData(@Param("mobile") String mobile);
+
 }

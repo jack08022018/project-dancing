@@ -33,7 +33,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/getStudentList")
-    public ResultDto<List<StudentInfo>> getClassList(@RequestBody StudentInfoEntity dto) {
+    public ResultDto<List<StudentInfo>> getStudentList(@RequestBody StudentInfoEntity dto) {
         ExcuteApi<List<StudentInfo>> excuteApi = () -> apiService.getStudentList(dto);
         return commonUtils.handleApi(excuteApi);
     }
@@ -47,6 +47,12 @@ public class EmployeeController {
     @PostMapping("/getStudentInfo")
     public ResultDto<ModelMap> getStudentInfo(@RequestBody StudentInfoEntity dto) {
         ExcuteApi<ModelMap> excuteApi = () -> apiService.getStudentInfo(dto);
+        return commonUtils.handleApi(excuteApi);
+    }
+
+    @PostMapping("/getStudentData")
+    public ResultDto<ModelMap> getStudentData(@RequestBody StudentInfoEntity dto) {
+        ExcuteApi<ModelMap> excuteApi = () -> apiService.getStudentData(dto.getMobile());
         return commonUtils.handleApi(excuteApi);
     }
 

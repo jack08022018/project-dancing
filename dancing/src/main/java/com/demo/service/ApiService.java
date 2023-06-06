@@ -12,5 +12,6 @@ public interface ApiService {
     boolean saveClass(ClassInfoEntity dto);
     List<StudentInfo> getStudentList(StudentInfoEntity dto);
     ModelMap getStudentInfo(StudentInfoEntity dto) throws Exception;
+    ModelMap getStudentData(String mobile) throws Exception;
     boolean saveStudent(StudentInfoEntity dto) throws Exception;
 }

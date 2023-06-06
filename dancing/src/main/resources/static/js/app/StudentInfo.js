@@ -72,7 +72,7 @@ Ext.define('ext.StudentInfo', {
 		async function getData() {
 			try {
 				let params = {};
-				let ajaxUrl = 'api/getData';
+				let ajaxUrl = 'employee/getStudentData';
 				let json = await postDataAjax(ajaxUrl, params);
 				console.log(json);
 			}catch(e) {

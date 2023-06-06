@@ -79,6 +79,7 @@ Ext.define('ext.AdminStudent', {
 			listeners: {
 				cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
 //                    setClassInfo(record.data);
+                    getStudentInfo(record.data.id);
 				},
 			},
 		});
@@ -162,30 +163,34 @@ Ext.define('ext.AdminStudent', {
 				    'name': getFormField(formSearch, 'name').getValue().trim(),
 				    'mobile': getFormField(formSearch, 'mobile').getValue().trim(),
 				};
-				let ajaxUrl = 'api/getStudentList';
-				let data = await postDataAjax(ajaxUrl, params);
-				console.log(data);
-				mainStore.loadData(data);
+				let ajaxUrl = 'employee/getStudentList';
+				let json = await postDataAjax(ajaxUrl, params);
+				console.log(json);
+				mainStore.loadData(json.data);
 				rightPanel.setDisabled(true);
 			}catch(e) {
 				handleException(e);
 			}
 		}
 
-        var currentInfo = {};
-		function setStudentInfo(s) {
+		async function getStudentInfo(id) {
             try {
-                console.log(s);
-                currentInfo = s;
-                getFormField(formInfo, 'song').setValue(s.songTitle);
-                getFormField(formInfo, 'createDate').setValue(new Date(s.createDate));
-                getFormField(formInfo, 'startDate').setValue(new Date(s.startDate));
-                getFormField(formInfo, 'endDate').setValue(new Date(s.endDate));
-                getFormField(formInfo, 'startTime').setValue(s.startTime);
-                getFormField(formInfo, 'endTime').setValue(s.endTime);
-                getFormField(formInfo, 'address').setValue(s.address);
-                getFormField(formInfo, 'status').setValue(s.status);
-				rightPanel.setDisabled(false);
+                let params = {
+                    'id': id,
+                };
+                let ajaxUrl = 'employee/getStudentInfo';
+                let json = await postDataAjax(ajaxUrl, params);
+                var info = json.data.info;
+                console.log(json);
+                getFormField(formInfo, 'name').setValue(info.name);
+                getFormField(formInfo, 'age').setValue(info.age);
+                getFormField(formInfo, 'mobile').setValue(info.mobile);
+                getFormField(formInfo, 'address').setValue(info.address);
+                getFormField(formInfo, 'facebook').setValue(info.facebook);
+                getFormField(formInfo, 'email').setValue(info.email);
+                getFormField(formInfo, 'notes').setValue(info.notes);
+                currentInfo = info;
+                rightPanel.setDisabled(false);
             }catch(e) {
                 handleException(e);
             }
@@ -196,15 +201,15 @@ Ext.define('ext.AdminStudent', {
                 if(!formInfo.isValid()) {
                     throw new Error();
                 }
-                currentInfo.songTitle = getFormField(formInfo, 'song').getValue();
-                currentInfo.createDate = getFormField(formInfo, 'createDate').getValue();
-                currentInfo.startDate = getFormField(formInfo, 'startDate').getValue();
-                currentInfo.endDate = getFormField(formInfo, 'endDate').getValue();
-                currentInfo.startTime = getFormField(formInfo, 'startTime').getValue();
-                currentInfo.endTime = getFormField(formInfo, 'endTime').getValue();
-                currentInfo.address = getFormField(formInfo, 'address').getValue();
-                currentInfo.status = getFormField(formInfo, 'status').getValue();
-                let ajaxUrl = 'api/saveClassInfo';
+                currentInfo.name = getFormField(formInfo, 'name').getValue().trim();
+                currentInfo.age = getFormField(formInfo, 'age').getValue();
+                currentInfo.mobile = getFormField(formInfo, 'mobile').getValue().trim().replaceAll('-', '');
+                currentInfo.address = getFormField(formInfo, 'address').getValue().trim();
+                currentInfo.facebook = getFormField(formInfo, 'facebook').getValue().trim();
+                currentInfo.email = getFormField(formInfo, 'email').getValue().trim();
+                currentInfo.notes = getFormField(formInfo, 'notes').getValue().trim();
+                console.log(currentInfo);
+                let ajaxUrl = 'employee/saveStudent';
                 await postDataAjax(ajaxUrl, currentInfo);
             }catch(e) {
                 handleException(e);

@@ -58,29 +58,40 @@ public class ApiServiceImpl implements ApiService {
             throw new Exception("Student is not existed");
         }
         result.put("info", info.get());
-        return null;
+        return result;
+    }
+
+    @Override
+    public ModelMap getStudentData(String mobile) throws Exception {
+        ModelMap result = new ModelMap();
+        StudentInfo info = studentInfoRepository.getStudentData(mobile);
+        if(info == null) {
+            throw new Exception("Student is not existed");
+        }
+        result.put("info", info);
+        return result;
     }
 
     @Override
     @Transactional(rollbackFor = {Exception.class, RuntimeException.class})
-    public boolean saveStudent(StudentInfoEntity userInfo) throws Exception {
-        if (userInfo.getId() == null) {
-            if(studentInfoRepository.checkUserExist(userInfo.getMobile()) > 0) {
+    public boolean saveStudent(StudentInfoEntity info) throws Exception {
+        if (info.getId() == null) {
+            if(studentInfoRepository.checkUserExist(info.getMobile()) > 0) {
                 throw new CommonException(ResponseStatus.ERROR.getCode(), "This mobile is registered !");
             }
             UserEntity user = new UserEntity()
-                    .setUsername(userInfo.getName())
+                    .setUsername(info.getMobile())
                     .setUserType(UserType.USER)
                     .setStatus(UserStatus.ACTIVE)
-                    .setPassword(passwordEncoder.encode(userInfo.getMobile()))
+                    .setPassword(passwordEncoder.encode(info.getMobile()))
                     .setCreateDate(LocalDateTime.now())
                     .setLastUpdate(LocalDateTime.now());
             user = userRepository.save(user);
-            userInfo.setId(user.getId());
-            userInfo.setCreateDate(LocalDateTime.now());
+            info.setId(user.getId());
+            info.setCreateDate(LocalDateTime.now());
         }
-        userInfo.setLastUpdate(LocalDateTime.now());
-        studentInfoRepository.save(userInfo);
+        info.setLastUpdate(LocalDateTime.now());
+        studentInfoRepository.save(info);
         return true;
     }
 

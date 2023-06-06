@@ -1,7 +1,5 @@
 package com.demo.dto;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import java.time.LocalDateTime;
 
 public interface StudentInfo {
@@ -9,5 +7,7 @@ public interface StudentInfo {
     Integer getId();
     String getName();
     String getMobile();
+    LocalDateTime getTuitionFeeDate();
+    LocalDateTime getExpiredDate();
 
 }
