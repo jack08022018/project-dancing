@@ -1,5 +1,5 @@
-2023-05-29 22:42:47.257 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 42465 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-05-29 22:42:47.261 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-29 22:42:47.257 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 42465 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-05-29 22:42:47.261 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-05-29 22:42:47.589 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-05-29 22:42:47.627 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
 2023-05-29 22:42:47.963 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -46,7 +46,7 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.7.jar:2.7.7]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.7.jar:2.7.7]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.7.jar:2.7.7]
-	at com.demo.DancingApplication.main(DancingApplication.java:13) ~[main/:?]
+	at com.demo.DancingWarApplication.main(DancingApplication.java:13) ~[main/:?]
 Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiServiceImpl' defined in file [/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main/com/demo/service/ApiServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userInfoRepository' defined in com.demo.repository.StudentInfoRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.demo.repository.StudentInfoRepository.checkUserExist(java.lang.String); Reason: Validation failed for query for method public abstract java.lang.Integer com.demo.repository.StudentInfoRepository.checkUserExist(java.lang.String)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.demo.repository.StudentInfoRepository.checkUserExist(java.lang.String)!
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800) ~[spring-beans-5.3.24.jar:5.3.24]
 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229) ~[spring-beans-5.3.24.jar:5.3.24]
@@ -413,8 +413,8 @@ Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: user_info is not
 	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.24.jar:5.3.24]
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.24.jar:5.3.24]
 	... 19 more
-2023-05-29 22:47:41.501 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 42867 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-05-29 22:47:41.505 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-29 22:47:41.501 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 42867 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-05-29 22:47:41.505 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-05-29 22:47:41.821 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-05-29 22:47:41.854 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 3 JPA repository interfaces.
 2023-05-29 22:47:42.161 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -469,7 +469,7 @@ com.demo.controller.EmployeeController#saveStudent(UserInfoEntity) mapped.
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.7.jar:2.7.7]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.7.jar:2.7.7]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.7.jar:2.7.7]
-	at com.demo.DancingApplication.main(DancingApplication.java:13) ~[main/:?]
+	at com.demo.DancingWarApplication.main(DancingApplication.java:13) ~[main/:?]
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospector' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'employeeController' method 
 com.demo.controller.EmployeeController#getData(ClassInfoEntity)
 to {POST [/employee/getClassList]}: There is already 'employeeController' bean method
@@ -606,8 +606,8 @@ com.demo.controller.EmployeeController#saveStudent(UserInfoEntity) mapped.
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.24.jar:5.3.24]
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.24.jar:5.3.24]
 	... 21 more
-2023-05-29 22:49:23.612 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 42990 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-05-29 22:49:23.616 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-29 22:49:23.612 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 42990 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-05-29 22:49:23.616 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-05-29 22:49:23.937 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-05-29 22:49:23.970 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
 2023-05-29 22:49:24.260 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -662,7 +662,7 @@ com.demo.controller.EmployeeController#saveStudent(UserInfoEntity) mapped.
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.7.jar:2.7.7]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.7.jar:2.7.7]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.7.jar:2.7.7]
-	at com.demo.DancingApplication.main(DancingApplication.java:13) ~[main/:?]
+	at com.demo.DancingWarApplication.main(DancingApplication.java:13) ~[main/:?]
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospector' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'employeeController' method 
 com.demo.controller.EmployeeController#getClassList(ClassInfoEntity)
 to {POST [/employee/getClassList]}: There is already 'employeeController' bean method
@@ -799,8 +799,8 @@ com.demo.controller.EmployeeController#saveStudent(UserInfoEntity) mapped.
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.24.jar:5.3.24]
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.24.jar:5.3.24]
 	... 21 more
-2023-05-29 22:50:01.886 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 43030 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-05-29 22:50:01.891 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-29 22:50:01.886 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 43030 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-05-29 22:50:01.891 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-05-29 22:50:02.258 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-05-29 22:50:02.290 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 3 JPA repository interfaces.
 2023-05-29 22:50:02.581 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -835,7 +835,7 @@ com.demo.controller.EmployeeController#saveStudent(UserInfoEntity) mapped.
 2023-05-29 22:50:04.070 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-05-29 22:50:04.162 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-05-29 22:50:04.176 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-05-29 22:50:04.183 INFO  com.demo.DancingApplication - Started DancingApplication in 2.547 seconds (JVM running for 3.083)
+2023-05-29 22:50:04.183 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.547 seconds (JVM running for 3.083)
 2023-05-29 22:50:40.666 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-05-29 22:50:40.666 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-05-29 22:50:40.666 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
@@ -1025,8 +1025,8 @@ org.springframework.security.authentication.BadCredentialsException: Bad credent
 2023-05-29 22:50:49.998 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [com.demo.config.jwt.payload.LoginResponse@4f0f86c2]
 2023-05-29 22:50:50.001 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
 2023-05-29 22:50:50.001 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
-2023-05-29 22:51:26.311 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 43156 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-05-29 22:51:26.316 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-29 22:51:26.311 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 43156 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-05-29 22:51:26.316 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-05-29 22:51:26.671 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-05-29 22:51:26.711 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 3 JPA repository interfaces.
 2023-05-29 22:51:27.030 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -1061,7 +1061,7 @@ org.springframework.security.authentication.BadCredentialsException: Bad credent
 2023-05-29 22:51:28.609 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-05-29 22:51:28.674 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-05-29 22:51:28.682 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-05-29 22:51:28.691 INFO  com.demo.DancingApplication - Started DancingApplication in 2.617 seconds (JVM running for 2.989)
+2023-05-29 22:51:28.691 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.617 seconds (JVM running for 2.989)
 2023-05-29 22:51:29.817 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-05-29 22:51:29.817 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-05-29 22:51:29.817 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver

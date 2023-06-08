@@ -1,5 +1,5 @@
-2023-06-01 16:17:18.148 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 90555 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-06-01 16:17:18.152 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-01 16:17:18.148 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 90555 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-06-01 16:17:18.152 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-06-01 16:17:18.471 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-06-01 16:17:18.503 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26 ms. Found 3 JPA repository interfaces.
 2023-06-01 16:17:18.822 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -34,9 +34,9 @@
 2023-06-01 16:17:20.395 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-06-01 16:17:20.461 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-06-01 16:17:20.472 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-06-01 16:17:20.479 INFO  com.demo.DancingApplication - Started DancingApplication in 2.59 seconds (JVM running for 3.15)
-2023-06-01 16:20:31.134 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 90865 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-06-01 16:20:31.138 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-01 16:17:20.479 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.59 seconds (JVM running for 3.15)
+2023-06-01 16:20:31.134 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 90865 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-06-01 16:20:31.138 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-06-01 16:20:31.468 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-06-01 16:20:31.502 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
 2023-06-01 16:20:31.808 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -71,7 +71,7 @@
 2023-06-01 16:20:33.279 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-06-01 16:20:33.345 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-06-01 16:20:33.353 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-06-01 16:20:33.360 INFO  com.demo.DancingApplication - Started DancingApplication in 2.483 seconds (JVM running for 2.856)
+2023-06-01 16:20:33.360 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.483 seconds (JVM running for 2.856)
 2023-06-01 16:20:36.132 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-06-01 16:20:36.132 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-06-01 16:20:36.133 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
@@ -475,8 +475,8 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 16:20:52.415 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [com.demo.config.jwt.payload.LoginResponse@6dd494da]
 2023-06-01 16:20:52.417 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
 2023-06-01 16:20:52.418 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
-2023-06-01 16:21:19.789 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 91005 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-06-01 16:21:19.794 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-01 16:21:19.789 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 91005 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-06-01 16:21:19.794 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-06-01 16:21:20.104 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-06-01 16:21:20.138 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 3 JPA repository interfaces.
 2023-06-01 16:21:20.428 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -511,7 +511,7 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 16:21:21.845 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-06-01 16:21:21.907 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-06-01 16:21:21.915 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-06-01 16:21:21.921 INFO  com.demo.DancingApplication - Started DancingApplication in 2.375 seconds (JVM running for 2.715)
+2023-06-01 16:21:21.921 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.375 seconds (JVM running for 2.715)
 2023-06-01 17:06:36.506 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-06-01 17:06:36.507 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-06-01 17:06:36.507 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
@@ -783,8 +783,8 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:06:39.005 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Failed to authorize filter invocation [POST /api/getStudentList] with attributes [authenticated]
 2023-06-01 17:06:39.006 ERROR com.demo.config.jwt.AuthEntryPointJwt - Unauthorized error: Full authentication is required to access this resource
 2023-06-01 17:06:39.013 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
-2023-06-01 17:06:49.368 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 93875 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-06-01 17:06:49.372 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-01 17:06:49.368 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 93875 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-06-01 17:06:49.372 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-06-01 17:06:49.684 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-06-01 17:06:49.718 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 3 JPA repository interfaces.
 2023-06-01 17:06:50.057 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -819,7 +819,7 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:06:51.532 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-06-01 17:06:51.597 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-06-01 17:06:51.605 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-06-01 17:06:51.613 INFO  com.demo.DancingApplication - Started DancingApplication in 2.462 seconds (JVM running for 2.808)
+2023-06-01 17:06:51.613 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.462 seconds (JVM running for 2.808)
 2023-06-01 17:06:58.443 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-06-01 17:06:58.443 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-06-01 17:06:58.443 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
@@ -1130,8 +1130,8 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:07:23.592 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [com.demo.config.jwt.payload.LoginResponse@730555e3]
 2023-06-01 17:07:23.595 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
 2023-06-01 17:07:23.595 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
-2023-06-01 17:07:37.503 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 93940 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-06-01 17:07:37.508 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-01 17:07:37.503 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 93940 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-06-01 17:07:37.508 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-06-01 17:07:37.918 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-06-01 17:07:37.951 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 3 JPA repository interfaces.
 2023-06-01 17:07:38.264 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -1166,7 +1166,7 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:07:39.713 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-06-01 17:07:39.777 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-06-01 17:07:39.786 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-06-01 17:07:39.794 INFO  com.demo.DancingApplication - Started DancingApplication in 2.517 seconds (JVM running for 2.871)
+2023-06-01 17:07:39.794 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.517 seconds (JVM running for 2.871)
 2023-06-01 17:07:53.818 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-06-01 17:07:53.818 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-06-01 17:07:53.818 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
@@ -1721,8 +1721,8 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:12:54.637 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Failed to authorize filter invocation [POST /employee/getClassList] with attributes [hasAnyAuthority('ADMIN','EMPLOYEE')]
 2023-06-01 17:12:54.637 ERROR com.demo.config.jwt.AuthEntryPointJwt - Unauthorized error: Full authentication is required to access this resource
 2023-06-01 17:12:54.639 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
-2023-06-01 17:14:07.666 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 94425 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-06-01 17:14:07.670 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-01 17:14:07.666 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 94425 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-06-01 17:14:07.670 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-06-01 17:14:07.955 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-06-01 17:14:07.986 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 3 JPA repository interfaces.
 2023-06-01 17:14:08.266 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -1757,7 +1757,7 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:14:09.641 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-06-01 17:14:09.712 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-06-01 17:14:09.720 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-06-01 17:14:09.726 INFO  com.demo.DancingApplication - Started DancingApplication in 2.279 seconds (JVM running for 2.608)
+2023-06-01 17:14:09.726 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.279 seconds (JVM running for 2.608)
 2023-06-01 17:14:17.171 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-06-01 17:14:17.172 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-06-01 17:14:17.172 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
@@ -2384,8 +2384,8 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:14:46.765 DEBUG org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Thu Jun 01 17:14:46 ICT 2023, status=404, error=Not Found, message=No message available,  (truncated)...]
 2023-06-01 17:14:46.769 DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
 2023-06-01 17:14:46.770 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
-2023-06-01 17:15:51.583 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 94556 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-06-01 17:15:51.587 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-01 17:15:51.583 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 94556 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-06-01 17:15:51.587 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-06-01 17:15:51.896 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-06-01 17:15:51.937 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 36 ms. Found 3 JPA repository interfaces.
 2023-06-01 17:15:52.209 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -2420,7 +2420,7 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:15:53.646 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-06-01 17:15:53.702 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-06-01 17:15:53.710 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-06-01 17:15:53.716 INFO  com.demo.DancingApplication - Started DancingApplication in 2.369 seconds (JVM running for 2.739)
+2023-06-01 17:15:53.716 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.369 seconds (JVM running for 2.739)
 2023-06-01 17:16:20.532 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-06-01 17:16:20.532 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-06-01 17:16:20.532 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
@@ -2725,8 +2725,8 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:16:22.791 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [com.demo.dto.ResultDto@3cb5eb26]
 2023-06-01 17:16:22.797 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
 2023-06-01 17:16:22.797 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
-2023-06-01 17:23:46.019 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 95133 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-06-01 17:23:46.023 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-01 17:23:46.019 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 95133 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-06-01 17:23:46.023 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-06-01 17:23:46.362 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-06-01 17:23:46.437 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 68 ms. Found 3 JPA repository interfaces.
 2023-06-01 17:23:46.794 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -2761,7 +2761,7 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-05-30T22:50:49Z. Curren
 2023-06-01 17:23:48.397 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-06-01 17:23:48.468 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-06-01 17:23:48.479 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-06-01 17:23:48.486 INFO  com.demo.DancingApplication - Started DancingApplication in 2.708 seconds (JVM running for 3.05)
+2023-06-01 17:23:48.486 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.708 seconds (JVM running for 3.05)
 2023-06-01 17:23:55.173 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-06-01 17:23:55.173 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-06-01 17:23:55.174 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver

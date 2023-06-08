@@ -1,5 +1,5 @@
-2023-05-30 16:42:52.505 INFO  com.demo.DancingApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 53628 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
-2023-05-30 16:42:52.509 INFO  com.demo.DancingApplication - No active profile set, falling back to 1 default profile: "default"
+2023-05-30 16:42:52.505 INFO  com.demo.DancingWarApplication - Starting DancingApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 53628 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-05-30 16:42:52.509 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
 2023-05-30 16:42:52.843 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2023-05-30 16:42:52.880 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 3 JPA repository interfaces.
 2023-05-30 16:42:53.197 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
@@ -34,7 +34,7 @@
 2023-05-30 16:42:54.755 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
 2023-05-30 16:42:54.821 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
 2023-05-30 16:42:54.830 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
-2023-05-30 16:42:54.836 INFO  com.demo.DancingApplication - Started DancingApplication in 2.583 seconds (JVM running for 3.064)
+2023-05-30 16:42:54.836 INFO  com.demo.DancingWarApplication - Started DancingApplication in 2.583 seconds (JVM running for 3.064)
 2023-05-30 16:44:12.532 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-05-30 16:44:12.532 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-05-30 16:44:12.532 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
