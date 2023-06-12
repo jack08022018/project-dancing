@@ -37,7 +37,7 @@ function getDataAjax(ajaxUrl, params) {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token,
+            'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
 
 		},
 		success : function(response) {
@@ -70,7 +70,7 @@ function postDataAjax(ajaxUrl, params) {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'Authorization': 'Bearer ' + token,
+			'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
 		},
 		success : function(response) {
 			var json = Ext.decode(response.responseText);

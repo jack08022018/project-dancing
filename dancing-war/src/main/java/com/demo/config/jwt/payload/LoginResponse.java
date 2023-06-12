@@ -14,5 +14,6 @@ public class LoginResponse {
     private String issuedAt;
     private String expiration;
     private String tokenType = "Bearer";
+    private String username;
     private List<String> roles;
 }

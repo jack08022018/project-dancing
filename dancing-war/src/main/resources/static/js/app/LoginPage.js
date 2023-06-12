@@ -20,7 +20,7 @@ Ext.define('ext.LoginPage', {
 		        {xtype: 'label', width: '100%', text: 'Wrong user name or password', itemId: 'wrong', margin: '0 0 7 0',
 		        	style: "display: block; color: red; font-size: 15px; text-align: center;",
 		        },
-				{xtype : 'metext', cls: 'form-controls username', width: '100%', name : 'userId', allowBlank: false},
+				{xtype : 'metext', cls: 'form-controls username', width: '100%', name : 'username', allowBlank: false},
 				{xtype : 'metext', cls: 'form-controls password', width: '100%', name : 'password', inputType: 'password', allowBlank: false,
 					listeners:  {
 		                specialkey: function (f,e) {
@@ -48,7 +48,7 @@ Ext.define('ext.LoginPage', {
 			bodyStyle: 'background: none;',
 			margin: '0 auto',
 			items : [
-			     {xtype: 'image', cls:'logo-plc', itemId: 'logoPlc', border: false, width: 170, src : CONTEXT_PATH + '/images/admin/admin_logo.png', },
+			     {xtype: 'image', cls:'logo-plc', itemId: 'logoPlc', border: false, width: 170, src : CONTEXT_PATH + 'images/admin/admin_logo.png', },
 		         {xtype: 'label', width: '100%', cls: 'loginLogan', xtype: 'label', text: 'TEACHING LEARNING EVALUATION SYSTEM'},
 		         formLogin
 	        ]
@@ -60,10 +60,10 @@ Ext.define('ext.LoginPage', {
 		formLogin.getComponent('wrong').setHidden(true);
 
 		function loadUserPassFromCookie() {
-			let userId = Ext.util.Cookies.get('userId');
+			let username = Ext.util.Cookies.get('username');
 			let password = Ext.util.Cookies.get('password');
-			if(userId != null) {
-				getFormField(formLogin, 'userId').setValue(userId);
+			if(username != null) {
+				getFormField(formLogin, 'username').setValue(username);
 			}
 			if(password != null) {
 				getFormField(formLogin, 'password').setValue(password);
@@ -73,39 +73,63 @@ Ext.define('ext.LoginPage', {
 
 		let expiry = new Date(new Date().getTime() + 30 * 24 * 3600 * 1000); // plus 30 days
 		function setUserPassCookie(userId, password) {
-			Ext.util.Cookies.set('userId', userId);
+			Ext.util.Cookies.set('username', userId);
 			Ext.util.Cookies.set('password', password);
 			Ext.util.Cookies.set('expires', expiry.toGMTString());
 //			document.cookie = "userId=" + escape(userId) + "; password=" + escape(password) + "; expires=" + expiry.toGMTString();
 		}
 
-		function login() {
+		async function login() {
+            try {
+                if(!formLogin.isValid()) {
+                    return;
+                }
+                let params = {
+                    'username': getFormField(formLogin, 'username').getValue().trim(),
+                    'password': getFormField(formLogin, 'password').getValue().trim(),
+                };
+                let ajaxUrl = 'login';
+                let json = await postDataAjax(ajaxUrl, params);
+                console.log(json);
+                localStorage.setItem('accessToken', json.data.accessToken);
+                localStorage.setItem('username', json.data.username);
+                document.location.href = CONTEXT_PATH + "view/adminPage";
+            }catch(e) {
+                handleException(e);
+            }
+        }
+
+		function logina() {
 			if(!formLogin.isValid()) {
 				return;
 			}
+			console.log("AA: " + CONTEXT_PATH + '/login')
 			Ext.getBody().mask("Loading...", "x-mask-loading", true);
 			formLogin.getForm().submit({
-    			url: CONTEXT_PATH + '/LoginProc.kps',
+    			url: CONTEXT_PATH + 'login',
     			encType : 'multipart/form-data',
 				success : async function(fp, res) {
 					Ext.get(document.body).unmask();
 					var json = Ext.JSON.decode(res.response.responseText);
-					if(json.loggedStatus == true) {
-						if(getFormField(formLogin, 'remember').getValue() == true) {
-							await setUserPassCookie(getFormField(formLogin, 'userId').getValue(), getFormField(formLogin, 'password').getValue());
-						}
-						document.location.href = CONTEXT_PATH + "/view/index";
-					}else {
-						formLogin.getComponent('wrong').setHidden(false);
-					}
+					console.log(json)
+					localStorage.setItem('jwtToken', json.data.accessToken);
+					document.location.href = CONTEXT_PATH + "view/adminClass";
+//					if(json.loggedStatus == true) {
+//						if(getFormField(formLogin, 'remember').getValue() == true) {
+//							await setUserPassCookie(getFormField(formLogin, 'userId').getValue(), getFormField(formLogin, 'password').getValue());
+//						}
+//						document.location.href = CONTEXT_PATH + "/view/index";
+//					}else {
+//						formLogin.getComponent('wrong').setHidden(false);
+//					}
                 },
                 error: function(fp, res) {
                 	Ext.get(document.body).unmask();
-					showMessageBoxInfo('Error');
+					showMessageBoxError('Error');
                 },
                 failure: function(fp, res) {
                 	Ext.get(document.body).unmask();
-					showMessageBoxInfo('Failed');
+					showMessageBoxError('Failed');
                 }
 			});
 		}

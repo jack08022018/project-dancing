@@ -1,5 +1,7 @@
 package com.demo.service;
 
+import com.demo.config.jwt.payload.LoginRequest;
+import com.demo.config.jwt.payload.LoginResponse;
 import com.demo.dto.StudentInfo;
 import com.demo.entity.ClassInfoEntity;
 import com.demo.entity.StudentInfoEntity;
@@ -14,4 +16,5 @@ public interface ApiService {
     ModelMap getStudentInfo(StudentInfoEntity dto) throws Exception;
     ModelMap getStudentData(String mobile) throws Exception;
     boolean saveStudent(StudentInfoEntity dto) throws Exception;
+    LoginResponse login(LoginRequest dto);
 }

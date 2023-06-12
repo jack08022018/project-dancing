@@ -162,29 +162,6 @@ Ext.define('component.MeNumber', {
 	}
 });
 
-Ext.define('component.MeNumber', {
-	extend : 'Ext.form.field.Number',
-	alias : 'widget.menumber2',
-	labelSeparator: '',
-	width: '100%',
-	hideTrigger: true,
-	keyNavEnabled: false,
-    mouseWheelEnabled: false,
-	initComponent : function() {
-		var me = this;
-        this.afterLabelTextTpl = new Ext.XTemplate(
-            '<tpl if="this.allowBlank()">',
-            '</tpl>',
-            {disableFormats: true,
-                allowBlank: function(){
-                   return me.allowBlank === false;
-                }
-            }
-        );
-		this.callParent(arguments);
-	}
-});
-
 Ext.define('component.meCheckbox', {
 	extend : 'Ext.form.field.Checkbox',
 	alias : 'widget.mecheckbox',

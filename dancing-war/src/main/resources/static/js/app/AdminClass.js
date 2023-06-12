@@ -130,7 +130,6 @@ Ext.define('ext.AdminClass', {
 			border: false,
 			layout: 'column',
 			items: [
-			    {xtype: 'hiddenfield', name: 'id'},
 			    {xtype: 'metext', columnWidth: .5, fieldLabel: 'Song', labelWidth: 50, name: 'song', margin: '10 0 0 0'},
 				{xtype: 'medate', columnWidth: .5, fieldLabel: 'Create Date', labelWidth: 70, name: 'createDate', value: new Date(), editable: false, margin: '10 0 0 10'},
 				{xtype: 'fieldcontainer', columnWidth: 1, layout: 'hbox', labelWidth: 50, margin: '10 0 0 0', labelSeparator: '',
@@ -156,6 +155,12 @@ Ext.define('ext.AdminClass', {
                         {xtype: 'medisplayfield', flex: .1, value: '~', style: 'text-align: center;'},
                         {xtype: 'metime', flex: .45, name: 'endTime', style: 'float: right;', allowBlank: false}
                     ]
+                },
+                {xtype: 'menumber', columnWidth: .5, fieldLabel: 'Min', labelWidth: 50, name: 'min', minValue: 0,
+                    decimalPrecision: 0, allowBlank: false, margin: '5 0 0 0'
+                },
+                {xtype: 'menumber', columnWidth: .5, fieldLabel: 'Max', labelWidth: 50, name: 'max', minValue: 0,
+                    decimalPrecision: 0, allowBlank: false, margin: '5 0 0 10'
                 },
 				{xtype: 'metext', columnWidth: .5, fieldLabel: 'Address', labelWidth: 50, name: 'address', margin: '5 0 0 0'},
 				{xtype: 'mecombo', columnWidth: .5, fieldLabel: 'Status', labelWidth: 50, name: 'status', margin: '5 0 0 10', allowBlank: false,
@@ -207,6 +212,8 @@ Ext.define('ext.AdminClass', {
 
 		this.items = [leftPanel, rightPanel];
 		this.callParent(arguments);
+
+//		console.log("AA: " + localStorage.getItem('username'))
 
 		async function getClassList() {
 			try {

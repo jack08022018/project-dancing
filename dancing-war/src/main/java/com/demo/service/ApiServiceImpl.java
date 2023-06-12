@@ -1,6 +1,10 @@
 package com.demo.service;
 
 import com.demo.config.exception.CommonException;
+import com.demo.config.jwt.JwtUtils;
+import com.demo.config.jwt.payload.LoginRequest;
+import com.demo.config.jwt.payload.LoginResponse;
+import com.demo.config.jwt.service.UserDetailsImpl;
 import com.demo.constant.ResponseStatus;
 import com.demo.constant.UserStatus;
 import com.demo.constant.UserType;
@@ -13,6 +17,10 @@ import com.demo.repository.StudentInfoRepository;
 import com.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +29,7 @@ import org.springframework.ui.ModelMap;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -30,6 +39,8 @@ public class ApiServiceImpl implements ApiService {
     final UserRepository userRepository;
     final StudentInfoRepository studentInfoRepository;
     final PasswordEncoder passwordEncoder;
+    final AuthenticationManager authenticationManager;
+    final JwtUtils jwtUtils;
 
     @Override
     public List<ClassInfoEntity> getClassList(ClassInfoEntity dto) {
@@ -93,6 +104,22 @@ public class ApiServiceImpl implements ApiService {
         info.setLastUpdate(LocalDateTime.now());
         studentInfoRepository.save(info);
         return true;
+    }
+
+    @Override
+    public LoginResponse login(LoginRequest dto) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword())
+        );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        LoginResponse response = jwtUtils.generateJwtToken(authentication);
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(item -> item.getAuthority())
+                .collect(Collectors.toList());
+        response.setRoles(roles);
+        response.setUsername(dto.getUsername());
+        return response;
     }
 
 }
