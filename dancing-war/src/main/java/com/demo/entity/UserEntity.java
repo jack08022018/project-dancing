@@ -2,7 +2,9 @@ package com.demo.entity;
 
 import com.demo.constant.UserStatus;
 import com.demo.constant.UserType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -37,7 +39,9 @@ public class UserEntity implements Serializable {
     @Column(name = "user_type")
     private UserType userType;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.LAZY)
+//    @JsonManagedReference
+    @JsonBackReference
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role_name", nullable = false)
     private List<String> roles;

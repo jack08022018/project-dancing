@@ -27,10 +27,10 @@ public class ViewController {
         return view;
     }
 
-    @GetMapping("/adminClass")
+    @GetMapping("/adminPage")
     public ModelAndView adminClass() {
         ModelAndView view = new ModelAndView();
-        view.setViewName("adminClass");
+        view.setViewName("adminPage");
         return view;
     }
 

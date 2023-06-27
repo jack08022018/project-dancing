@@ -5,6 +5,7 @@ import com.demo.dto.ResultDto;
 import com.demo.dto.StudentInfo;
 import com.demo.entity.ClassInfoEntity;
 import com.demo.entity.StudentInfoEntity;
+import com.demo.entity.StudioInfoEntity;
 import com.demo.service.ApiService;
 import com.demo.utils.CommonUtils;
 import com.demo.utils.ExcuteApi;
@@ -32,6 +33,12 @@ public class EmployeeController {
         return commonUtils.handleApi(excuteApi);
     }
 
+    @PostMapping("/getStudioList")
+    public ResultDto<List<StudioInfoEntity>> getStudioList(@RequestBody StudioInfoEntity dto) {
+        ExcuteApi<List<StudioInfoEntity>> excuteApi = () -> apiService.getStudioList(dto);
+        return commonUtils.handleApi(excuteApi);
+    }
+
     @PostMapping("/getStudentList")
     public ResultDto<List<StudentInfo>> getStudentList(@RequestBody StudentInfoEntity dto) {
         ExcuteApi<List<StudentInfo>> excuteApi = () -> apiService.getStudentList(dto);
@@ -47,12 +54,6 @@ public class EmployeeController {
     @PostMapping("/getStudentInfo")
     public ResultDto<ModelMap> getStudentInfo(@RequestBody StudentInfoEntity dto) {
         ExcuteApi<ModelMap> excuteApi = () -> apiService.getStudentInfo(dto);
-        return commonUtils.handleApi(excuteApi);
-    }
-
-    @PostMapping("/getStudentData")
-    public ResultDto<ModelMap> getStudentData(@RequestBody StudentInfoEntity dto) {
-        ExcuteApi<ModelMap> excuteApi = () -> apiService.getStudentData(dto.getMobile());
         return commonUtils.handleApi(excuteApi);
     }
 

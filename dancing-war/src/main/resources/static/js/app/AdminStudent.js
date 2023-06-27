@@ -84,6 +84,25 @@ Ext.define('ext.AdminStudent', {
 			},
 		});
 
+		let classListPopup = Ext.create('ext.popup.ClassListPopup', {
+            reloadParent: function(info) {
+//                resetFormInfo();
+//                mainStore.loadPage(1, {
+//                    params: paramsToSearch
+//                })
+            }
+        });
+
+		let btnClass = Ext.widget('mebutton', {
+            text: 'Class Info',
+            iconCls: 'far fa-file btn-icon',
+            padding: '8 10',
+            margin: '5 10 0 0',
+            handler: function() {
+                classListPopup.reloadPopup();
+            }
+        });
+
 		let btnRegister = Ext.widget('mebutton', {
 			text: 'New Registration',
 			iconCls: 'far fa-file btn-icon',
@@ -105,6 +124,15 @@ Ext.define('ext.AdminStudent', {
             }
         });
 
+        let btnAssign = Ext.widget('mebutton', {
+            text: 'Assign Student',
+            iconCls: 'far fa-save btn-icon',
+            padding: '8 10',
+            handler: function() {
+                assignStudent();
+            }
+        });
+
 		let formInfo = Ext.create('Ext.form.Panel', {
 			width: '100%',
 			border: false,
@@ -118,7 +146,7 @@ Ext.define('ext.AdminStudent', {
                 {xtype: 'metext', columnWidth: .5, fieldLabel: 'Email', labelWidth: 55, name: 'email', margin: '5 0 0 10'},
                 {xtype: 'mearea', columnWidth: 1, fieldLabel: 'Notes', labelWidth: 50, name: 'notes', margin: '5 0 0 0'},
                 {xtype: 'container', layout: 'hbox', columnWidth: 1, margin: '5 0 0 0',
-                    items: [{xtype: 'tbfill'}, btnSave]
+                    items: [btnAssign, {xtype: 'tbfill'}, btnSave]
                 },
 			]
 		});
@@ -134,7 +162,7 @@ Ext.define('ext.AdminStudent', {
 				formSearch,
 				mainGrid,
 				{xtype: 'container', width : '100%', layout : 'hbox',
-					items: [{xtype: 'tbfill'}, btnRegister]
+					items: [{xtype: 'tbfill'}, btnClass, btnRegister]
 				}
 			]
 		});

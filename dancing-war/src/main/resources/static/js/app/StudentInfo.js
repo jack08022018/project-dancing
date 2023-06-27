@@ -3,7 +3,7 @@ Ext.define('ext.StudentInfo', {
 	header: false,
 	width : '100%',
 	border: false,
-			autoScroll: true,
+	autoScroll: true,
 	layout: {
         type: 'vbox',
         align: 'center',
@@ -37,10 +37,11 @@ Ext.define('ext.StudentInfo', {
         });
 
 		let mainForm = Ext.create('Ext.form.Panel', {
-			width : 380,
+		    maxWidth: 350,
+			width : '100%',
 			border : false,
 			padding : 5,
-			margin: '5 0 5 0',
+			margin: '5 5 5 5',
 			style : 'border: 1px solid #b5b8c8; border-radius:7px;box-shadow: #39393980 0px 0px 25px;background-color: white;',
 			bodyStyle: 'background-color: white;',
 			layout: 'vbox',

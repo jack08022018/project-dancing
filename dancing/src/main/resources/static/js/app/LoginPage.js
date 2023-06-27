@@ -48,7 +48,7 @@ Ext.define('ext.LoginPage', {
 			bodyStyle: 'background: none;',
 			margin: '0 auto',
 			items : [
-			     {xtype: 'image', cls:'logo-plc', itemId: 'logoPlc', border: false, width: 170, src : CONTEXT_PATH + '/images/admin/admin_logo.png', },
+			     {xtype: 'image', cls:'logo-plc', itemId: 'logoPlc', border: false, width: 170, src : CONTEXT_PATH + 'images/admin/admin_logo.png', },
 		         {xtype: 'label', width: '100%', cls: 'loginLogan', xtype: 'label', text: 'TEACHING LEARNING EVALUATION SYSTEM'},
 		         formLogin
 	        ]
@@ -79,18 +79,52 @@ Ext.define('ext.LoginPage', {
 //			document.cookie = "userId=" + escape(userId) + "; password=" + escape(password) + "; expires=" + expiry.toGMTString();
 		}
 
-		function login() {
+		async function login() {
+            try {
+                if(!formLogin.isValid()) {
+                    return;
+                }
+                let params = {
+                    'username': getFormField(formLogin, 'username').getValue().trim(),
+                    'password': getFormField(formLogin, 'password').getValue().trim(),
+                };
+                let ajaxUrl = 'login';
+                let json = await postDataAjax(ajaxUrl, params);
+                console.log(json);
+                let info = json.data;
+                localStorage.setItem('accessToken', info.accessToken);
+                localStorage.setItem('username', info.username);
+                switch(info.roles[0]) {
+                    case 'ADMIN':
+                       document.location.href = CONTEXT_PATH + "view/adminPage";
+                        break;
+                    case 'EMPLOYEE':
+                        document.location.href = CONTEXT_PATH + "view/adminStudent";
+                        break;
+                    default:
+                        document.location.href = CONTEXT_PATH + "view/studentInfo";
+                        break;
+                }
+            }catch(e) {
+                handleException(e);
+            }
+        }
+
+		function logina() {
 			if(!formLogin.isValid()) {
 				return;
 			}
+			console.log("AA: " + CONTEXT_PATH + '/login')
 			Ext.getBody().mask("Loading...", "x-mask-loading", true);
 			formLogin.getForm().submit({
-    			url: CONTEXT_PATH + '/login',
+    			url: CONTEXT_PATH + 'login',
     			encType : 'multipart/form-data',
 				success : async function(fp, res) {
 					Ext.get(document.body).unmask();
 					var json = Ext.JSON.decode(res.response.responseText);
 					console.log(json)
+					localStorage.setItem('jwtToken', json.data.accessToken);
+					document.location.href = CONTEXT_PATH + "view/adminClass";
 //					if(json.loggedStatus == true) {
 //						if(getFormField(formLogin, 'remember').getValue() == true) {
 //							await setUserPassCookie(getFormField(formLogin, 'userId').getValue(), getFormField(formLogin, 'password').getValue());
@@ -102,11 +136,11 @@ Ext.define('ext.LoginPage', {
                 },
                 error: function(fp, res) {
                 	Ext.get(document.body).unmask();
-					showMessageBoxInfo('Error');
+					showMessageBoxError('Error');
                 },
                 failure: function(fp, res) {
                 	Ext.get(document.body).unmask();
-					showMessageBoxInfo('Failed');
+					showMessageBoxError('Failed');
                 }
 			});
 		}

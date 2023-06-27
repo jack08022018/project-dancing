@@ -5,7 +5,6 @@ server:
   error:
     include-message: always
 spring:
-#  webflux.base-path: /dancing
   application.name: dancing
   main.allow-bean-definition-overriding: true
   jackson.default-property-inclusion: non_absent
@@ -17,16 +16,10 @@ spring:
     suffix: .html
     template-resolver-order: 1
   jpa:
-    #    show-sql: true
     properties:
       hibernate:
         format_sql: true
-#        dialect: org.hibernate.dialect.MariaDB103Dialect
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-        #        query:
-        #          plan_cache_max_size: 1
-        #          plan_parameter_metadata_max_size: 1
-        #        generate_statistics: true
         jdbc:
           batch_size: 1000
           time_zone: UTC
@@ -34,7 +27,6 @@ spring:
         order_updates: true
         use-new-id-generator-mappings: true
   datasource:
-#    url: jdbc:mysql://localhost:3306/sakila
     url: jdbc:mysql://15.235.209.194:3306/hoangdt_db
     username: hoangdt_db
     password: Hoangdt

@@ -91,9 +91,20 @@ Ext.define('ext.LoginPage', {
                 let ajaxUrl = 'login';
                 let json = await postDataAjax(ajaxUrl, params);
                 console.log(json);
-                localStorage.setItem('accessToken', json.data.accessToken);
-                localStorage.setItem('username', json.data.username);
-                document.location.href = CONTEXT_PATH + "view/adminPage";
+                let info = json.data;
+                localStorage.setItem('accessToken', info.accessToken);
+                localStorage.setItem('username', info.username);
+                switch(info.roles[0]) {
+                    case 'ADMIN':
+                       document.location.href = CONTEXT_PATH + "view/adminPage";
+                        break;
+                    case 'EMPLOYEE':
+                        document.location.href = CONTEXT_PATH + "view/adminStudent";
+                        break;
+                    default:
+                        document.location.href = CONTEXT_PATH + "view/studentInfo";
+                        break;
+                }
             }catch(e) {
                 handleException(e);
             }

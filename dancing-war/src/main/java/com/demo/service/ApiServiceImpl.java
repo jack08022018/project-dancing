@@ -10,11 +10,10 @@ import com.demo.constant.UserStatus;
 import com.demo.constant.UserType;
 import com.demo.dto.StudentInfo;
 import com.demo.entity.ClassInfoEntity;
+import com.demo.entity.StudioInfoEntity;
 import com.demo.entity.UserEntity;
 import com.demo.entity.StudentInfoEntity;
-import com.demo.repository.ClassInfoRepository;
-import com.demo.repository.StudentInfoRepository;
-import com.demo.repository.UserRepository;
+import com.demo.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -41,10 +40,17 @@ public class ApiServiceImpl implements ApiService {
     final PasswordEncoder passwordEncoder;
     final AuthenticationManager authenticationManager;
     final JwtUtils jwtUtils;
+    final StudioInfoRepository studioInfoRepository;
+    final StudentAssignRepository studentAssignRepository;
 
     @Override
     public List<ClassInfoEntity> getClassList(ClassInfoEntity dto) {
         return classInfoRepository.getClassList(dto);
+    }
+
+    @Override
+    public List<StudioInfoEntity> getStudioList(StudioInfoEntity dto) {
+        return studioInfoRepository.getStudioList(dto);
     }
 
     @Override
@@ -53,6 +59,17 @@ public class ApiServiceImpl implements ApiService {
     public boolean saveClass(ClassInfoEntity dto) {
         dto.setLastUpdate(LocalDateTime.now());
         classInfoRepository.save(dto);
+        return true;
+    }
+
+    @Override
+    @Transactional(rollbackFor = {Exception.class, RuntimeException.class})
+    public boolean saveStudio(StudioInfoEntity dto) {
+        if(dto.getCreateDate() == null) {
+            dto.setCreateDate(LocalDateTime.now());
+        }
+        dto.setLastUpdate(LocalDateTime.now());
+        studioInfoRepository.save(dto);
         return true;
     }
 
@@ -88,7 +105,7 @@ public class ApiServiceImpl implements ApiService {
     public boolean saveStudent(StudentInfoEntity info) throws Exception {
         if (info.getId() == null) {
             if(studentInfoRepository.checkUserExist(info.getMobile()) > 0) {
-                throw new CommonException(ResponseStatus.ERROR.getCode(), "This mobile is registered !");
+                throw new CommonException(ResponseStatus.ERROR.getCode(), "Số điện thoại đã được đăng ký !");
             }
             UserEntity user = new UserEntity()
                     .setUsername(info.getMobile())
@@ -103,6 +120,7 @@ public class ApiServiceImpl implements ApiService {
         }
         info.setLastUpdate(LocalDateTime.now());
         studentInfoRepository.save(info);
+        int a = 1/0;
         return true;
     }
 

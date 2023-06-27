@@ -41,7 +41,7 @@ public class CommonUtils {
         }catch (Exception e) {
             log.error("ExceptionHandle: " + e.getMessage(), e);
             return new ResultDto<T>()
-                    .setStatus(ResponseStatus.SUCCESS.getCode())
+                    .setStatus(ResponseStatus.ERROR.getCode())
                     .setMessage(e.getMessage());
         }
     }

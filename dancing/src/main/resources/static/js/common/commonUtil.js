@@ -1,10 +1,19 @@
 
 function handleException(e) {
-	if(e.info != '' && e.info != null) {
-		showMessageBoxError(e.info.message);
+	if(!(e.info == null) && e.info.status == 401) {
+	    localStorage.removeItem("accessToken");
+	    localStorage.removeItem("username");
+	    document.location.href = CONTEXT_PATH + "view/login";
+	}else {
+	    let message = e.message;
+	    if(message != null && message != '') {
+	        showMessageBoxError(message);
+	    }else {
+            showMessageBoxError(e.info.message);
+	    }
+        console.log(e.info)
+        console.log(e.stack)
 	}
-	console.log(e.info)
-	console.log(e.stack)
 }
 
 function showMessageSaveSuccess(){
@@ -26,7 +35,6 @@ function showMessageBoxError(message){
 		icon : Ext.MessageBox.ERROR
 	});
 }
-var token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4NTk0MDE4NiwiZXhwIjoxNjg2MDI2NTg2fQ.E-k7cbpBaVTqTOyrmQo-DTNRiUHWaOrre-uZnUN9hGPBFCecp4gbGQ2ynrwKEtdGObIQUg0fF_PUYhLgBw4HLg';
 function getDataAjax(ajaxUrl, params) {
 	let deferred = new Ext.Deferred();
 	mask();
@@ -37,7 +45,7 @@ function getDataAjax(ajaxUrl, params) {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token,
+            'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
 
 		},
 		success : function(response) {
@@ -60,6 +68,7 @@ function getDataAjax(ajaxUrl, params) {
 	return deferred.promise;
 }
 
+//let token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTA2NzA0OTA1IiwiaWF0IjoxNjg3MDg4MzA4LCJleHAiOjE2ODcxNzQ3MDh9.o8h2htVXrIVwifGSnIdVbDIrSVfBAIfH3TFJPl9L2i4241VHc5T70lDrQxHJ7GRhyXo2DN9sh6k3djtZgn3IEw';
 function postDataAjax(ajaxUrl, params) {
 	let deferred = new Ext.Deferred();
 	mask();
@@ -70,7 +79,8 @@ function postDataAjax(ajaxUrl, params) {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'Authorization': 'Bearer ' + token,
+//			'Authorization': 'Bearer ' + token,
+			'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
 		},
 		success : function(response) {
 			var json = Ext.decode(response.responseText);

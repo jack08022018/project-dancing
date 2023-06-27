@@ -6,6 +6,7 @@ public enum ResponseStatus {
     ENUM_NOT_FOUND("", "ResCode is not found"),
     SUCCESS("00", "Success"),
     ERROR("06", ""),
+    BAD_CREDENTIAL("07", "Wrong username or password!"),
     PROGRESSING("09", "Request in progress");
 
     private String code;

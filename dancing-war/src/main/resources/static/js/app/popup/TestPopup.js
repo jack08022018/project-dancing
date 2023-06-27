@@ -1,4 +1,4 @@
-Ext.define('ext.popup.AddClassPopup', {
+Ext.define('ext.popup.TestPopup', {
 	extend: 'component.MeWindow',
 	title: 'Add Class',
 	width: 700,

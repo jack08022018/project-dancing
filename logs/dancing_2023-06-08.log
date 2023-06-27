@@ -1429,3 +1429,379 @@ org.springframework.security.web.firewall.RequestRejectedException: The request 
 2023-06-08 17:31:37.256 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [com.demo.config.jwt.payload.LoginResponse@2a233edc]
 2023-06-08 17:31:37.261 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
 2023-06-08 17:31:37.262 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:51.673 INFO  com.demo.DancingWarApplication - Starting DancingWarApplication using Java 19.0.2 on MacBook-Pro-cua-dinh.local with PID 70971 (/Users/dinhhoang/Documents/Develop/projects/project-dancing/dancing-war/build/classes/java/main started by dinhhoang in /Users/dinhhoang/Documents/Develop/projects/project-dancing)
+2023-06-08 22:47:51.677 INFO  com.demo.DancingWarApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-08 22:47:52.009 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-08 22:47:52.048 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 3 JPA repository interfaces.
+2023-06-08 22:47:52.349 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9092 (http)
+2023-06-08 22:47:52.355 INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9092"]
+2023-06-08 22:47:52.356 INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-08 22:47:52.356 INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-06-08 22:47:52.406 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring embedded WebApplicationContext
+2023-06-08 22:47:52.406 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 710 ms
+2023-06-08 22:47:52.473 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-06-08 22:47:52.929 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-06-08 22:47:52.967 INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-08 22:47:52.994 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-06-08 22:47:53.063 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-06-08 22:47:53.110 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2023-06-08 22:47:53.393 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-08 22:47:53.397 INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-08 22:47:53.577 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-06-08 22:47:53.746 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 14 mappings in 'requestMappingHandlerMapping'
+2023-06-08 22:47:53.762 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2023-06-08 22:47:53.765 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/css/**']
+2023-06-08 22:47:53.772 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/js/**']
+2023-06-08 22:47:53.772 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/extjs/**']
+2023-06-08 22:47:53.773 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/images/**']
+2023-06-08 22:47:53.773 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/login']
+2023-06-08 22:47:53.773 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/view/*']
+2023-06-08 22:47:53.773 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasAnyAuthority('ADMIN')] for Ant [pattern='/encode']
+2023-06-08 22:47:53.774 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasAnyAuthority('ADMIN')] for Ant [pattern='/admin/*']
+2023-06-08 22:47:53.774 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasAnyAuthority('ADMIN','EMPLOYEE')] for Ant [pattern='/employee/*']
+2023-06-08 22:47:53.774 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasAnyAuthority('ADMIN','EMPLOYEE','USER')] for Ant [pattern='/employee/getStudentData']
+2023-06-08 22:47:53.774 DEBUG org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [authenticated] for any request
+2023-06-08 22:47:53.777 INFO  org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@165a5979, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ea40c9f, org.springframework.security.web.context.SecurityContextPersistenceFilter@3962b216, org.springframework.security.web.header.HeaderWriterFilter@311453ab, org.springframework.web.filter.CorsFilter@5d782a4a, com.demo.config.jwt.AuthTokenFilter@42150951, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31a80c88, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6785786d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@cc91fe3, org.springframework.security.web.session.SessionManagementFilter@2dd4a7a9, org.springframework.security.web.access.ExceptionTranslationFilter@5c41f6a0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6632eb19]
+2023-06-08 22:47:53.802 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-06-08 22:47:53.827 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-06-08 22:47:53.886 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9092"]
+2023-06-08 22:47:53.896 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9092 (http) with context path '/dancing'
+2023-06-08 22:47:53.902 INFO  com.demo.DancingWarApplication - Started DancingWarApplication in 2.488 seconds (JVM running for 3.031)
+2023-06-08 22:47:59.454 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/dancing] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-08 22:47:59.454 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-08 22:47:59.454 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2023-06-08 22:47:59.454 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2023-06-08 22:47:59.454 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2023-06-08 22:47:59.455 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3b28ab9b
+2023-06-08 22:47:59.455 DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@6c92a59d
+2023-06-08 22:47:59.455 DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-06-08 22:47:59.455 INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-08 22:47:59.461 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /view/studentInfo
+2023-06-08 22:47:59.463 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.467 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.demo.controller.ViewController#studentInfo()
+2023-06-08 22:47:59.467 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.468 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.468 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.472 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /view/studentInfo] with attributes [permitAll]
+2023-06-08 22:47:59.472 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /view/studentInfo
+2023-06-08 22:47:59.473 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/view/studentInfo", parameters={}
+2023-06-08 22:47:59.474 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.demo.controller.ViewController#studentInfo()
+2023-06-08 22:47:59.483 DEBUG org.springframework.web.servlet.view.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-06-08 22:47:59.631 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.632 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.648 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/ext-all.js
+2023-06-08 22:47:59.649 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.650 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /js/common/Common.js
+2023-06-08 22:47:59.650 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.650 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/theme-gray/theme-gray.js
+2023-06-08 22:47:59.650 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /css/InfoPage.css
+2023-06-08 22:47:59.650 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.650 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.651 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/themes-testcenter/themes-testcenter-all.css
+2023-06-08 22:47:59.651 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.651 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /js/common/commonUtil.js
+2023-06-08 22:47:59.651 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.652 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.652 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.652 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.652 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.652 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.652 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.653 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.653 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.653 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.653 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.653 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /css/InfoPage.css] with attributes [permitAll]
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /css/InfoPage.css
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/ext-all.js] with attributes [permitAll]
+2023-06-08 22:47:59.653 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/css/InfoPage.css", parameters={}
+2023-06-08 22:47:59.654 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.654 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.654 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/theme-gray/theme-gray.js] with attributes [permitAll]
+2023-06-08 22:47:59.654 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /js/common/commonUtil.js] with attributes [permitAll]
+2023-06-08 22:47:59.654 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/theme-gray/theme-gray.js
+2023-06-08 22:47:59.654 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /js/common/Common.js] with attributes [permitAll]
+2023-06-08 22:47:59.654 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /js/common/commonUtil.js
+2023-06-08 22:47:59.654 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /js/common/Common.js
+2023-06-08 22:47:59.653 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.654 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.653 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/ext-all.js
+2023-06-08 22:47:59.654 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/js/common/Common.js", parameters={}
+2023-06-08 22:47:59.654 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/ext-all.js", parameters={}
+2023-06-08 22:47:59.655 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.655 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.654 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/theme-gray/theme-gray.js", parameters={}
+2023-06-08 22:47:59.656 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.654 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.657 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.654 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/js/common/commonUtil.js", parameters={}
+2023-06-08 22:47:59.657 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/themes-testcenter/themes-testcenter-all.css] with attributes [permitAll]
+2023-06-08 22:47:59.658 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.660 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/themes-testcenter/themes-testcenter-all.css
+2023-06-08 22:47:59.660 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/themes-testcenter/themes-testcenter-all.css", parameters={}
+2023-06-08 22:47:59.661 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.663 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.664 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.664 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.664 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.663 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.665 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.665 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.665 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.666 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.666 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.666 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /js/common/component.js
+2023-06-08 22:47:59.667 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.668 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.668 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.668 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.669 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.669 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /js/common/component.js] with attributes [permitAll]
+2023-06-08 22:47:59.670 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /js/common/component.js
+2023-06-08 22:47:59.670 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/js/common/component.js", parameters={}
+2023-06-08 22:47:59.671 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.674 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.675 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.678 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.679 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.783 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/themes-testcenter/themes-testcenter-all_3.css
+2023-06-08 22:47:59.783 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/themes-testcenter/themes-testcenter-all_2.css
+2023-06-08 22:47:59.783 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.784 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.784 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.784 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.784 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.784 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.784 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.784 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/themes-testcenter/themes-testcenter-all_1.css
+2023-06-08 22:47:59.785 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/themes-testcenter/themes-testcenter-all_2.css] with attributes [permitAll]
+2023-06-08 22:47:59.785 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/themes-testcenter/themes-testcenter-all_2.css
+2023-06-08 22:47:59.785 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.785 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.785 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/themes-testcenter/themes-testcenter-all_2.css", parameters={}
+2023-06-08 22:47:59.785 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.785 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.785 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.786 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.786 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/themes-testcenter/themes-testcenter-all_3.css] with attributes [permitAll]
+2023-06-08 22:47:59.786 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/themes-testcenter/themes-testcenter-all_3.css
+2023-06-08 22:47:59.786 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.786 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/themes-testcenter/themes-testcenter-all_3.css", parameters={}
+2023-06-08 22:47:59.786 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.786 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.786 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/themes-testcenter/themes-testcenter-all_1.css] with attributes [permitAll]
+2023-06-08 22:47:59.786 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.786 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/themes-testcenter/themes-testcenter-all_1.css
+2023-06-08 22:47:59.786 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/themes-testcenter/themes-testcenter-all_1.css", parameters={}
+2023-06-08 22:47:59.787 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.788 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.789 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.790 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.791 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.793 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.793 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.832 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /js/app/StudentInfo.js?_dc=1686239279827
+2023-06-08 22:47:59.832 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.832 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.832 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.832 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.833 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.833 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /js/app/StudentInfo.js?_dc=1686239279827] with attributes [permitAll]
+2023-06-08 22:47:59.833 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /js/app/StudentInfo.js?_dc=1686239279827
+2023-06-08 22:47:59.833 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/js/app/StudentInfo.js?_dc=1686239279827", parameters={masked}
+2023-06-08 22:47:59.833 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.835 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.835 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.847 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/themes-testcenter/images/loadmask/loading.gif
+2023-06-08 22:47:59.847 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.848 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.848 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.848 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.848 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.849 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/themes-testcenter/images/loadmask/loading.gif] with attributes [permitAll]
+2023-06-08 22:47:59.849 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/themes-testcenter/images/loadmask/loading.gif
+2023-06-08 22:47:59.849 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/themes-testcenter/images/loadmask/loading.gif", parameters={}
+2023-06-08 22:47:59.849 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.852 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.852 DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /employee/getStudentData
+2023-06-08 22:47:59.852 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.853 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.853 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.demo.controller.EmployeeController#getStudentData(StudentInfoEntity)
+2023-06-08 22:47:59.888 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/themes-testcenter/fonts/OpenSans-Regular.ttf
+2023-06-08 22:47:59.888 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.888 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.889 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.889 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.889 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.889 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/themes-testcenter/fonts/OpenSans-Regular.ttf] with attributes [permitAll]
+2023-06-08 22:47:59.889 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/themes-testcenter/fonts/OpenSans-Regular.ttf
+2023-06-08 22:47:59.889 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/themes-testcenter/fonts/OpenSans-Regular.ttf", parameters={}
+2023-06-08 22:47:59.890 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.892 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/themes-testcenter/font-awesome/fonts/fontawesome-webfont.woff2?v=4.4.0
+2023-06-08 22:47:59.892 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /extjs/themes-testcenter/fonts/OpenSans-Bold.ttf
+2023-06-08 22:47:59.892 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.892 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.893 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.893 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.894 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.894 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.894 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.894 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.894 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.894 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.894 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.894 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/themes-testcenter/font-awesome/fonts/fontawesome-webfont.woff2?v=4.4.0] with attributes [permitAll]
+2023-06-08 22:47:59.895 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.895 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/themes-testcenter/font-awesome/fonts/fontawesome-webfont.woff2?v=4.4.0
+2023-06-08 22:47:59.895 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/themes-testcenter/font-awesome/fonts/fontawesome-webfont.woff2?v=4.4.0", parameters={masked}
+2023-06-08 22:47:59.895 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /extjs/themes-testcenter/fonts/OpenSans-Bold.ttf] with attributes [permitAll]
+2023-06-08 22:47:59.896 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /extjs/themes-testcenter/fonts/OpenSans-Bold.ttf
+2023-06-08 22:47:59.896 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.896 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/extjs/themes-testcenter/fonts/OpenSans-Bold.ttf", parameters={}
+2023-06-08 22:47:59.897 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.899 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.899 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.901 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.901 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.909 DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /images/favicon.ico
+2023-06-08 22:47:59.911 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2023-06-08 22:47:59.912 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.912 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: Missing bearer token
+2023-06-08 22:47:59.912 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.912 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.913 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /images/favicon.ico] with attributes [permitAll]
+2023-06-08 22:47:59.913 DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /images/favicon.ico
+2023-06-08 22:47:59.913 DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/dancing/images/favicon.ico", parameters={}
+2023-06-08 22:47:59.913 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-08 22:47:59.915 ERROR com.demo.config.jwt.JwtUtils - JWT expired at 2023-06-06T11:43:06Z. Current time: 2023-06-08T22:47:59Z, a difference of 212693915 milliseconds.  Allowed clock skew: 0 milliseconds.
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-06-06T11:43:06Z. Current time: 2023-06-08T22:47:59Z, a difference of 212693915 milliseconds.  Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:385) ~[jjwt-0.9.1.jar:0.9.1]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:481) ~[jjwt-0.9.1.jar:0.9.1]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:541) ~[jjwt-0.9.1.jar:0.9.1]
+	at com.demo.config.jwt.JwtUtils.validateJwtToken(JwtUtils.java:68) ~[main/:?]
+	at com.demo.config.jwt.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:29) ~[main/:?]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+2023-06-08 22:47:59.922 ERROR com.demo.config.jwt.AuthTokenFilter - Cannot set user authentication: JWT expired at 2023-06-06T11:43:06Z. Current time: 2023-06-08T22:47:59Z, a difference of 212693915 milliseconds.  Allowed clock skew: 0 milliseconds.
+2023-06-08 22:47:59.922 DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2023-06-08 22:47:59.922 DEBUG org.springframework.security.web.session.SessionManagementFilter - Request requested invalid session id E7740B79B4ADA8AB40FF0C9BD45ACFB0
+2023-06-08 22:47:59.928 DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2023-06-08 22:47:59.928 DEBUG org.springframework.security.web.access.intercept.FilterSecurityInterceptor - Failed to authorize filter invocation [POST /employee/getStudentData] with attributes [hasAnyAuthority('ADMIN','EMPLOYEE')]
+2023-06-08 22:47:59.928 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 22:47:59.929 ERROR com.demo.config.jwt.AuthEntryPointJwt - Unauthorized error: Full authentication is required to access this resource
+2023-06-08 22:47:59.934 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2023-06-08 23:38:04.938 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m11s442ms).
+2023-06-08 23:41:36.810 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m31s875ms).
+2023-06-08 23:56:14.359 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m7s534ms).
+2023-06-09 00:53:51.802 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m6s691ms).
+2023-06-09 01:08:11.887 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m20s86ms).
+2023-06-09 01:22:52.390 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m10s475ms).
+2023-06-09 01:37:10.733 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m48s299ms).
+2023-06-09 01:51:41.948 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m1s203ms).
+2023-06-09 02:06:07.254 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m25s307ms).
+2023-06-09 02:20:37.249 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m59s989ms).
+2023-06-09 02:34:36.423 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m59s173ms).
+2023-06-09 02:49:25.077 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m48s568ms).
+2023-06-09 03:03:24.612 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m59s535ms).
+2023-06-09 03:18:01.132 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m6s511ms).
+2023-06-09 03:32:22.499 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m21s367ms).
+2023-06-09 03:47:07.648 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m15s155ms).
+2023-06-09 04:01:19.947 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m42s281ms).
+2023-06-09 04:15:37.632 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m17s684ms).
+2023-06-09 04:30:37.062 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m29s394ms).
+2023-06-09 04:44:29.841 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m52s780ms).
+2023-06-09 04:58:32.099 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m32s244ms).
+2023-06-09 05:13:11.815 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m9s706ms).
+2023-06-09 05:27:29.438 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m17s623ms).
+2023-06-09 05:42:12.248 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m12s774ms).
+2023-06-09 05:56:40.047 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m57s795ms).
+2023-06-09 06:10:56.312 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m16s264ms).
+2023-06-09 06:25:36.713 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m10s402ms).
+2023-06-09 06:40:16.708 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m9s992ms).
+2023-06-09 06:54:37.256 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m50s545ms).
+2023-06-09 07:08:34.419 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m57s163ms).
+2023-06-09 07:23:10.448 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m6s11ms).
+2023-06-09 07:37:20.599 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m10s151ms).
+2023-06-09 07:51:57.414 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m6s805ms).
+2023-06-09 07:55:44.057 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m16s630ms).
+2023-06-09 07:57:51.281 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m7s224ms).
+2023-06-09 08:38:29.197 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=39m37s902ms).
+2023-06-09 08:49:35.970 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m6s773ms).
+2023-06-09 09:04:16.687 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m10s708ms).
+2023-06-09 09:18:36.866 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m20s179ms).
+2023-06-09 09:32:59.736 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m52s835ms).
+2023-06-09 09:47:31.472 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m1s720ms).
+2023-06-09 10:01:46.038 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m14s566ms).
+2023-06-09 10:16:22.614 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m6s568ms).
+2023-06-09 10:30:28.624 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m6s11ms).
+2023-06-09 10:45:18.699 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m20s67ms).
+2023-06-09 10:59:48.678 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m29s979ms).
+2023-06-09 11:14:27.087 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m8s402ms).
+2023-06-09 11:28:09.532 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m42s444ms).
+2023-06-09 11:42:47.809 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m8s291ms).
+2023-06-09 11:57:06.939 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m19s130ms).
+2023-06-09 12:11:43.164 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m6s213ms).
+2023-06-09 12:25:50.077 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m6s913ms).
+2023-06-09 12:40:39.416 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m19s337ms).
+2023-06-09 12:54:59.013 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m19s597ms).
+2023-06-09 13:09:29.862 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m815ms).
+2023-06-09 13:12:10.539 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m40s677ms).

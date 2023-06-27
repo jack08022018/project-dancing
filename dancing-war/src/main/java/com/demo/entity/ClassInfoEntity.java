@@ -35,8 +35,17 @@ public class ClassInfoEntity implements Serializable {
     @Column(name = "end_time")
     private String endTime;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "min_student")
+    private Integer minStudent;
+
+    @Column(name = "max_student")
+    private Integer maxStudent;
+
+    @Column(name = "total_days")
+    private Integer totalDays;
+
+    @Column(name = "studio_id")
+    private Integer studioId;
 
     @Column(name = "status")
     private String status;

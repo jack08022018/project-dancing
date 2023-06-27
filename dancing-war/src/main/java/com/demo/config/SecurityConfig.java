@@ -69,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/encode", "/admin/*").hasAnyAuthority("ADMIN")
                 .antMatchers("/employee/*").hasAnyAuthority("ADMIN", "EMPLOYEE")
                 .antMatchers("/employee/*").hasAnyAuthority("ADMIN", "EMPLOYEE")
-                .antMatchers("/employee/getStudentData").hasAnyAuthority("ADMIN", "EMPLOYEE", "USER")
+                .antMatchers("/student/*").hasAnyAuthority("ADMIN", "EMPLOYEE", "USER")
                 .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }

@@ -8,6 +8,8 @@ Ext.define('ext.AdminClass', {
 
 		let me = this;
 
+		let addressStore = Ext.widget('mestore');
+
 		let btnSearch = Ext.widget('mebutton', {
 			text: 'Search',
 			padding: '8 10',
@@ -159,11 +161,10 @@ Ext.define('ext.AdminClass', {
                 {xtype: 'menumber', columnWidth: .5, fieldLabel: 'Min', labelWidth: 50, name: 'min', minValue: 0,
                     decimalPrecision: 0, allowBlank: false, margin: '5 0 0 0'
                 },
-                {xtype: 'menumber', columnWidth: .5, fieldLabel: 'Max', labelWidth: 50, name: 'max', minValue: 0,
+                {xtype: 'menumber', columnWidth: .5, fieldLabel: 'Max', labelWidth: 70, name: 'max', minValue: 0,
                     decimalPrecision: 0, allowBlank: false, margin: '5 0 0 10'
                 },
-				{xtype: 'metext', columnWidth: .5, fieldLabel: 'Address', labelWidth: 50, name: 'address', margin: '5 0 0 0'},
-				{xtype: 'mecombo', columnWidth: .5, fieldLabel: 'Status', labelWidth: 50, name: 'status', margin: '5 0 0 10', allowBlank: false,
+				{xtype: 'mecombo', columnWidth: .5, fieldLabel: 'Status', labelWidth: 50, name: 'status', margin: '5 0 0 0', allowBlank: false,
 					store: Ext.widget('mestore', {
                        fields: ['code', 'name'],
                        data: [
@@ -172,6 +173,13 @@ Ext.define('ext.AdminClass', {
                        ]
 					}),
 					valueField: 'code', displayField: 'name', value: 'OPEN', editable: false,
+				},
+				{xtype: 'menumber', columnWidth: .5, fieldLabel: 'Total Days', labelWidth: 70, name: 'totalDays', minValue: 0,
+                    decimalPrecision: 0, allowBlank: false, margin: '5 0 0 10'
+                },
+				{xtype: 'mecombo', columnWidth: .5, fieldLabel: 'Address', labelWidth: 50, name: 'address', margin: '5 0 0 0',
+				    store: addressStore, valueField: 'id', displayField: 'displayValue', queryMode: 'local',
+				    editable: false, allowBlank: false, //forceSelection: true
 				},
 				{xtype: 'container', layout: 'hbox', columnWidth: 1, margin: '5 0 0 0',
                     items: [{xtype: 'tbfill'}, btnSave]
@@ -215,6 +223,26 @@ Ext.define('ext.AdminClass', {
 
 //		console.log("AA: " + localStorage.getItem('username'))
 
+        let studioList = [];
+        async function getStudioList() {
+			try {
+				let params = {};
+				let ajaxUrl = 'employee/getStudioList';
+				let json = await postDataAjax(ajaxUrl, params);
+				let data = json.data;
+				console.log(data);
+				data.forEach(s => {
+				    s.displayValue = `${s.studioName} - ${s.address}`;
+				});
+				addressStore.loadData(data);
+				studioList = data;
+				getFormField(formInfo, 'address').setValue(data[0].id);
+			}catch(e) {
+				handleException(e);
+			}
+		}
+		getStudioList();
+
 		async function getClassList() {
 			try {
 				let params = {
@@ -223,8 +251,16 @@ Ext.define('ext.AdminClass', {
 				};
 				let ajaxUrl = 'employee/getClassList';
 				let json = await postDataAjax(ajaxUrl, params);
-				console.log(json);
-				mainStore.loadData(json.data);
+				let data = json.data;
+				if(data.length > 0) {
+				    data.forEach(c => {
+				        const studio = studioList.find(s => s.id === c.studioId);
+				        c.address = `${studio.studioName} - ${studio.address}`;
+				    })
+                    mainStore.loadData(data);
+				}else {
+				    mainStore.removeAll();
+				}
 				rightPanel.setDisabled(true);
 			}catch(e) {
 				handleException(e);
@@ -242,8 +278,11 @@ Ext.define('ext.AdminClass', {
                 getFormField(formInfo, 'endDate').setValue(new Date(s.endDate));
                 getFormField(formInfo, 'startTime').setValue(s.startTime);
                 getFormField(formInfo, 'endTime').setValue(s.endTime);
-                getFormField(formInfo, 'address').setValue(s.address);
+                getFormField(formInfo, 'address').setValue(s.studioId);
                 getFormField(formInfo, 'status').setValue(s.status);
+                getFormField(formInfo, 'min').setValue(s.minStudent);
+                getFormField(formInfo, 'max').setValue(s.maxStudent);
+                getFormField(formInfo, 'totalDays').setValue(s.totalDays);
 				rightPanel.setDisabled(false);
             }catch(e) {
                 handleException(e);
@@ -261,8 +300,12 @@ Ext.define('ext.AdminClass', {
                 currentInfo.endDate = getFormField(formInfo, 'endDate').getValue();
                 currentInfo.startTime = getFormField(formInfo, 'startTime').getValue();
                 currentInfo.endTime = getFormField(formInfo, 'endTime').getValue();
-                currentInfo.address = getFormField(formInfo, 'address').getValue();
+                currentInfo.studioId = getFormField(formInfo, 'address').getValue();
                 currentInfo.status = getFormField(formInfo, 'status').getValue();
+                currentInfo.minStudent = getFormField(formInfo, 'min').getValue();
+                currentInfo.maxStudent = getFormField(formInfo, 'max').getValue();
+                currentInfo.totalDays = getFormField(formInfo, 'totalDays').getValue();
+
                 let ajaxUrl = 'admin/saveClassInfo';
                 await postDataAjax(ajaxUrl, currentInfo);
                 showMessageSaveSuccess();

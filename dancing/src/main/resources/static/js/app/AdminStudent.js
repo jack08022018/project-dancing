@@ -84,6 +84,25 @@ Ext.define('ext.AdminStudent', {
 			},
 		});
 
+		let classListPopup = Ext.create('ext.popup.ClassListPopup', {
+            reloadParent: function(info) {
+//                resetFormInfo();
+//                mainStore.loadPage(1, {
+//                    params: paramsToSearch
+//                })
+            }
+        });
+
+		let btnClass = Ext.widget('mebutton', {
+            text: 'Class Info',
+            iconCls: 'far fa-file btn-icon',
+            padding: '8 10',
+            margin: '5 10 0 0',
+            handler: function() {
+                classListPopup.reloadPopup();
+            }
+        });
+
 		let btnRegister = Ext.widget('mebutton', {
 			text: 'New Registration',
 			iconCls: 'far fa-file btn-icon',
@@ -105,20 +124,37 @@ Ext.define('ext.AdminStudent', {
             }
         });
 
+        let assignStudentPopup = Ext.create('ext.popup.AssignStudentPopup', {
+            reloadParent: function(info) {
+//                resetFormInfo();
+//                mainStore.loadPage(1, {
+//                    params: paramsToSearch
+//                })
+            }
+        });
+        let btnAssign = Ext.widget('mebutton', {
+            text: 'Assign Student',
+            iconCls: 'far fa-save btn-icon',
+            padding: '8 10',
+            handler: function() {
+                assignStudentPopup.reloadPopup(currentInfo);
+            }
+        });
+
 		let formInfo = Ext.create('Ext.form.Panel', {
 			width: '100%',
 			border: false,
 			layout: 'column',
 			items: [
-			    {xtype: 'metext', columnWidth: .5, fieldLabel: 'Name', labelWidth: 50, name: 'name', allowBlank: false, margin: '5 0 0 0'},
+			    {xtype: 'metext', columnWidth: .5, fieldLabel: 'Name', labelWidth: 60, name: 'name', allowBlank: false, margin: '5 0 0 0'},
 				{xtype: 'menumber', columnWidth: .5, fieldLabel: 'Age', labelWidth: 55, name: 'age', decimalPrecision: 0, minValue: 0, maxValue: 100, margin: '5 0 0 10'},
-				{xtype: 'mephone', columnWidth: .5, fieldLabel: 'Mobile', labelWidth: 50, name: 'mobile', allowBlank: false, margin: '5 0 0 0'},
+				{xtype: 'mephone', columnWidth: .5, fieldLabel: 'Mobile', labelWidth: 60, name: 'mobile', allowBlank: false, margin: '5 0 0 0'},
 				{xtype: 'metext', columnWidth: .5, fieldLabel: 'Address', labelWidth: 55, name: 'address', margin: '5 0 0 10'},
-				{xtype: 'metext', columnWidth: .5, fieldLabel: 'Facebook', labelWidth: 50, name: 'facebook', allowBlank: false, margin: '5 0 0 0'},
+				{xtype: 'metext', columnWidth: .5, fieldLabel: 'Facebook', labelWidth: 60, name: 'facebook', allowBlank: false, margin: '5 0 0 0'},
                 {xtype: 'metext', columnWidth: .5, fieldLabel: 'Email', labelWidth: 55, name: 'email', margin: '5 0 0 10'},
-                {xtype: 'mearea', columnWidth: 1, fieldLabel: 'Notes', labelWidth: 50, name: 'notes', margin: '5 0 0 0'},
+                {xtype: 'mearea', columnWidth: 1, fieldLabel: 'Notes', labelWidth: 60, name: 'notes', margin: '5 0 0 0'},
                 {xtype: 'container', layout: 'hbox', columnWidth: 1, margin: '5 0 0 0',
-                    items: [{xtype: 'tbfill'}, btnSave]
+                    items: [btnAssign, {xtype: 'tbfill'}, btnSave]
                 },
 			]
 		});
@@ -134,7 +170,7 @@ Ext.define('ext.AdminStudent', {
 				formSearch,
 				mainGrid,
 				{xtype: 'container', width : '100%', layout : 'hbox',
-					items: [{xtype: 'tbfill'}, btnRegister]
+					items: [{xtype: 'tbfill'}, btnClass, btnRegister]
 				}
 			]
 		});
@@ -149,6 +185,7 @@ Ext.define('ext.AdminStudent', {
 			split : true,
 			bodyPadding: 5,
 			autoScroll: true,
+			disabled: true,
 			items: [
 				formInfo,
 			],
@@ -173,6 +210,7 @@ Ext.define('ext.AdminStudent', {
 			}
 		}
 
+        let currentInfo = {};
 		async function getStudentInfo(id) {
             try {
                 let params = {

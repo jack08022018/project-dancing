@@ -28,9 +28,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User Not Found with username: " + username);
         }
-        if(user.getUserType() == UserType.USER) {
-            user.setRoles(Arrays.asList(UserType.USER.name()));
-        }
+//        if(user.getUserType() == UserType.USER) {
+//            user.setRoles(Arrays.asList(UserType.USER.name()));
+//        }
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role))
                 .collect(Collectors.toList());

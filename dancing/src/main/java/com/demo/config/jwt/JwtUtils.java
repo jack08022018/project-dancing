@@ -46,11 +46,10 @@ public class JwtUtils {
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
         String pattern = "yyyy-MM-dd HH:mm:ss";
-        return LoginResponse.builder()
-                .accessToken(token)
-                .issuedAt(commonUtils.dateToString(issuedAt, pattern))
-                .expiration(commonUtils.dateToString(expiration, pattern))
-                .build();
+        return new LoginResponse()
+                .setAccessToken(token)
+                .setIssuedAt(commonUtils.dateToString(issuedAt, pattern))
+                .setExpiration(commonUtils.dateToString(expiration, pattern));
     }
 
     public String getUserNameFromJwtToken(String token) {

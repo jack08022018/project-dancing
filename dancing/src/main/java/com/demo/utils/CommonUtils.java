@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.Mac;
@@ -38,10 +39,15 @@ public class CommonUtils {
             return new ResultDto<T>()
                     .setStatus(ResponseStatus.ERROR.getCode())
                     .setMessage(e.getMessage());
+        }catch (BadCredentialsException e) {
+            log.error("BadCredentialsExceptionHandle: " + e.getMessage(), e);
+            return new ResultDto<T>()
+                    .setStatus(ResponseStatus.BAD_CREDENTIAL.getCode())
+                    .setMessage(ResponseStatus.BAD_CREDENTIAL.getDetail());
         }catch (Exception e) {
             log.error("ExceptionHandle: " + e.getMessage(), e);
             return new ResultDto<T>()
-                    .setStatus(ResponseStatus.SUCCESS.getCode())
+                    .setStatus(ResponseStatus.ERROR.getCode())
                     .setMessage(e.getMessage());
         }
     }
