@@ -17,7 +17,7 @@ public interface EmployeeInfoRepository extends JpaRepository<EmployeeInfoEntity
                     on B.id = A.id
              where 1=1
                 and B.status = 'ACTIVE'
-                and A.mobile = :mobile)
+                and A.mobile = :mobile
             """, nativeQuery = true)
     EmployeeInfoEntity findByMobile(@Param("mobile") String mobile);
 }

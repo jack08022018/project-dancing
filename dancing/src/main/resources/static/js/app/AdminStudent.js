@@ -33,7 +33,7 @@ Ext.define('ext.AdminStudent', {
                     listeners: {
                         specialkey: function (f, e) {
                             if (e.getKey() == e.ENTER) {
-                                getClassList();
+                                getStudentList();
                             }
                         }
                     }
@@ -42,7 +42,7 @@ Ext.define('ext.AdminStudent', {
 					listeners: {
 						specialkey: function (f, e) {
 							if (e.getKey() == e.ENTER) {
-				                getClassList();
+				                getStudentList();
 							}
 						}
 					}
@@ -51,7 +51,7 @@ Ext.define('ext.AdminStudent', {
                     listeners: {
                         specialkey: function (f, e) {
                             if (e.getKey() == e.ENTER) {
-                                getClassList();
+                                getStudentList();
                             }
                         }
                     }
@@ -72,13 +72,12 @@ Ext.define('ext.AdminStudent', {
                         return ++row;
                     }
 				},
-				{text : 'Name', minWidth: 150, flex: 1, dataIndex: 'name', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'Name', minWidth: 150, flex: 1, dataIndex: 'name', sortable: false, menuDisabled: true},
 				{text : 'Mobile', width: 120, dataIndex: 'mobile', align : 'center', sortable: false, menuDisabled: true},
-				{text : 'Class', width: 150, dataIndex: '', align : 'center', sortable: false, menuDisabled: true},
+				{text : 'Class', width: 200, dataIndex: 'classList', sortable: false, menuDisabled: true},
 			],
 			listeners: {
 				cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
-//                    setClassInfo(record.data);
                     getStudentInfo(record.data.id);
 				},
 			},
@@ -202,8 +201,26 @@ Ext.define('ext.AdminStudent', {
 				};
 				let ajaxUrl = 'employee/getStudentList';
 				let json = await postDataAjax(ajaxUrl, params);
-				console.log(json);
-				mainStore.loadData(json.data);
+				let data = json.data;
+				console.log(data);
+				if(data.length > 0) {
+				    const groupedById = data.reduce((result, obj) => {
+                        const existingObj = result.find(s => s.id === obj.id);
+                        if (!existingObj) {
+                            result.push({ id: obj.id, name: obj.name, mobile: obj.mobile, classList: [] });
+                        }
+                        return result;
+                    }, []);
+                    groupedById.forEach(s => {
+                        s.classList = data.filter(t => t.id == s.id)
+                            .map(t => t.songTitle)
+                            .join('<br>');
+                    })
+				    console.log(groupedById)
+				    mainStore.loadData(groupedById);
+				}else {
+				    mainStore.removeAll();
+				}
 				rightPanel.setDisabled(true);
 			}catch(e) {
 				handleException(e);
