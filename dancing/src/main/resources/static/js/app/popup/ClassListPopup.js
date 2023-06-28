@@ -102,6 +102,7 @@ Ext.define('ext.popup.ClassListPopup', {
                 },
                 {text : 'Address', width: 200, dataIndex: 'address', align : 'center', sortable: false, menuDisabled: true},
                 {text : 'Status', width: 70, dataIndex: 'status', align : 'center', sortable: false, menuDisabled: true},
+                {text : 'Total Student Assign', width: 120, dataIndex: 'totalStudentAssign', align : 'center', sortable: false, menuDisabled: true},
             ],
             listeners: {
                 cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
