@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class AssignDto<T> {
-    private Integer idClass;
-    private Integer idStudent;
-    private Integer idEmployee;
+    private Long idClass;
+    private Long idStudent;
+    private Long idEmployee;
 }

@@ -8,7 +8,7 @@ function handleException(e) {
 	    let message = e.message;
 	    if(message != null && message != '') {
 	        showMessageBoxError(message);
-	    }else {
+	    }else if(e.info.message != null) {
             showMessageBoxError(e.info.message);
 	    }
         console.log(e.info)
@@ -69,6 +69,44 @@ function getDataAjax(ajaxUrl, params) {
 }
 
 //let token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTA2NzA0OTA1IiwiaWF0IjoxNjg3MDg4MzA4LCJleHAiOjE2ODcxNzQ3MDh9.o8h2htVXrIVwifGSnIdVbDIrSVfBAIfH3TFJPl9L2i4241VHc5T70lDrQxHJ7GRhyXo2DN9sh6k3djtZgn3IEw';
+function saveDataAjax(ajaxUrl, params) {
+    let deferred = new Ext.Deferred();
+    Ext.Msg.confirm('Dancing', 'Do you want to save ?', function(msg) {
+        if (msg == 'yes') {
+            mask();
+            Ext.Ajax.request({
+                url : CONTEXT_PATH + ajaxUrl,
+                jsonData : params,
+                timeout: 10000,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+                },
+                success : function(response) {
+                    var json = Ext.decode(response.responseText);
+                    if(json.status != '00') {
+                        deferred.reject({info: json});
+                    }else {
+                        deferred.resolve(json);
+                    }
+                    unMask();
+                },
+                error : function(response) {
+                    unMask();
+                    deferred.reject({info: Ext.decode(response.responseText)});
+                },
+                failure: function(response){
+                    unMask();
+                    deferred.reject({info: Ext.decode(response.responseText)});
+                }
+            });
+        }else {
+            deferred.reject({info: {status: '06', message: null}});
+        }
+    });
+    return deferred.promise;
+}
 function postDataAjax(ajaxUrl, params) {
 	let deferred = new Ext.Deferred();
 	mask();

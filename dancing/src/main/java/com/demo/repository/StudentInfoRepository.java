@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StudentInfoRepository extends JpaRepository<StudentInfoEntity, Integer> {
+public interface StudentInfoRepository extends JpaRepository<StudentInfoEntity, Long> {
     @Query(value = "select count(*) from student_info where mobile = :mobile", nativeQuery = true)
     Integer checkUserExist(@Param("mobile") String mobile);
 

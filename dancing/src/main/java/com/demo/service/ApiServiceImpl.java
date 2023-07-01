@@ -204,11 +204,26 @@ public class ApiServiceImpl implements ApiService {
     public boolean changeStudentStatus(StudentStatusDto dto) throws Exception {
         var entity = studentAssignRepository.findById(dto.getId())
                 .filter(s -> s.getStatus() != AssignStatus.DELETE)
-                .orElseThrow(() -> new Exception("Student not found!"));
+                .orElseThrow(() -> new Exception("Student assign not found!"));
         entity.setStatus(AssignStatus.getEnum(dto.getStatus()));
         entity.setNotes(dto.getNotes());
         entity.setLastUpdate(LocalDateTime.now());
         studentAssignRepository.save(entity);
+        if(entity.getStatus() == AssignStatus.DELETE) {
+            var classInfo = classInfoRepository.findById(entity.getIdClass())
+                    .orElseThrow(() -> new Exception("Class not found!"));
+            classInfo.setTotalStudentAssign(classInfo.getTotalStudentAssign() - 1);
+            classInfoRepository.save(classInfo);
+        }
+        return true;
+    }
+
+    @Override
+    @Transactional(rollbackFor = {Exception.class, RuntimeException.class})
+    public boolean updateMobileStudent(StudentStatusDto dto) throws Exception {
+        var entity = studentInfoRepository.findById(dto.getId())
+                .orElseThrow(() -> new Exception("Student not found!"));
+        entity.setLastUpdate(LocalDateTime.now());
         return true;
     }
 

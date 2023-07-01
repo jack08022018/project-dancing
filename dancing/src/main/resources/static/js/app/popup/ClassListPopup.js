@@ -68,7 +68,9 @@ Ext.define('ext.popup.ClassListPopup', {
                 btnSearch,
             ]
         });
-//
+
+        let viewStudentPopup = Ext.create('ext.popup.ViewStudentPopup');
+
         let mainStore = Ext.widget('mestore');
         let mainGrid = Ext.create('Ext.grid.Panel', {
             width: '100%',
@@ -84,7 +86,7 @@ Ext.define('ext.popup.ClassListPopup', {
                     }
                 },
                 {text : 'ID', width: 40, dataIndex: 'id', align: 'center', sortable: false, menuDisabled: true},
-                {text : 'Song', minWidth: 150, flex: 1, dataIndex: 'songTitle', align : 'center', sortable: false, menuDisabled: true},
+                {text : 'Song', minWidth: 150, flex: 1, dataIndex: 'songTitle', cellWrap: true, sortable: false, menuDisabled: true},
                 {text : 'Create Date', width: 100, dataIndex: 'createDate', align : 'center', sortable: false, menuDisabled: true,
                     renderer: function(value, metaData, record, row, col, store, gridView) {
                         return Common.dateToString(record.data.createDate);
@@ -100,15 +102,21 @@ Ext.define('ext.popup.ClassListPopup', {
                         return record.data.startTime + ' ~ ' + record.data.endTime;
                     }
                 },
-                {text : 'Address', width: 200, dataIndex: 'address', align : 'center', sortable: false, menuDisabled: true},
+                {text : 'Address', width: 200, dataIndex: 'address', cellWrap: true, sortable: false, menuDisabled: true},
                 {text : 'Status', width: 70, dataIndex: 'status', align : 'center', sortable: false, menuDisabled: true},
-                {text : 'Total Student Assign', width: 120, dataIndex: 'totalStudentAssign', align : 'center', sortable: false, menuDisabled: true},
+                {text : 'Total Student', dataIndex: 'totalStudentAssign', align: 'center', width: 120, sortable: false, menuDisabled: true,
+                    renderer: function(value, rootRecord, record) {
+                        return `<a href="#" data-action="view" class="grid-icon">  ${value}  </a>`;
+                    }
+                },
             ],
             listeners: {
                 cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
-                    console.log(record.data);
-//					if(cellIndex != 0) {
-//					}
+                    if($(e.target).data('action') == 'view') {
+                        viewStudentPopup.reloadPopup(record.data.id);
+                    }else {
+                        console.log(record.data)
+                    }
                 },
             },
         });

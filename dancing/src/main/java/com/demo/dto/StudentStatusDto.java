@@ -11,4 +11,5 @@ public class StudentStatusDto {
     private Long id;
     private String status;
     private String notes;
+    private String mobile;
 }

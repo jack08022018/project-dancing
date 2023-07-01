@@ -34,7 +34,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .collect(Collectors.toList());
 
         return UserDetailsImpl.builder()
-                .id(user.getId())
+                .id(user.getId().intValue())
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .authorities(authorities)

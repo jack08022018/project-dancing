@@ -64,7 +64,7 @@ Ext.define('ext.AdminClass', {
 			]
 		});
 
-        let viewStudentPopup = Ext.create('ext.popup.ViewStudentPopup', {
+        let viewStudentPopup = Ext.create('ext.popup.ViewStudentPopupAdmin', {
             reloadParent: function(info) {
 //                resetFormInfo();
 //                mainStore.loadPage(1, {

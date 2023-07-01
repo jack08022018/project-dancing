@@ -29,4 +29,5 @@ public interface ApiService {
     boolean assignStudentByAdmin(StudentAssignEntity dto) throws Exception;
     List<StudentAssignInfo> getAllStudentOfClass(long id);
     boolean changeStudentStatus(StudentStatusDto dto) throws Exception;
+    boolean updateMobileStudent(StudentStatusDto dto) throws Exception;
 }

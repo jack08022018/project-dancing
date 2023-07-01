@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public interface StudentInfo {
 //    @Value("#{target.title}")
-    Integer getId();
+    Long getId();
     String getName();
     String getMobile();
 

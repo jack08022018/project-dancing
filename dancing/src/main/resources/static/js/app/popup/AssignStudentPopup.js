@@ -98,8 +98,6 @@ Ext.define('ext.popup.AssignStudentPopup', {
             listeners: {
                 cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
                     console.log(record.data);
-//					if(cellIndex != 0) {
-//					}
                 },
             },
         });
@@ -115,7 +113,7 @@ Ext.define('ext.popup.AssignStudentPopup', {
 		
 		this.items = [formSearch, mainGrid];
 		this.bbar = [
-             {xtype: 'mepanel', style: 'background: transparent;', bodyStyle: 'background: transparent;', padding: 5,
+             {xtype: 'mepanel', style: 'background: transparent;', bodyStyle: 'background: transparent;',
                  layout: {
                      type: 'hbox',
                      align: 'middle',
@@ -152,8 +150,6 @@ Ext.define('ext.popup.AssignStudentPopup', {
                     throw new Error('Please choose one class to assign!');
                 }
                 let selected = selectedRows[0].data;
-                console.log(selected)
-                console.log(currentStudent)
 
                 var mobileEmployee = localStorage.getItem('username');
                 let ajaxUrl = mobileEmployee == 'admin' ? 'admin/assignStudent' : 'employee/assignStudent';
@@ -164,6 +160,7 @@ Ext.define('ext.popup.AssignStudentPopup', {
                 };
                 await postDataAjax(ajaxUrl, params);
                 showMessageSaveSuccess();
+                getClassListCanAssign();
             }catch(e) {
                 handleException(e);
             }

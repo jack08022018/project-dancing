@@ -1,10 +1,7 @@
 package com.demo.controller;
 
 
-import com.demo.dto.ClassInfoInterface;
-import com.demo.dto.ResultDto;
-import com.demo.dto.StudentAssignInfo;
-import com.demo.dto.StudentInfo;
+import com.demo.dto.*;
 import com.demo.entity.ClassInfoEntity;
 import com.demo.entity.StudentAssignEntity;
 import com.demo.entity.StudentInfoEntity;
@@ -79,6 +76,12 @@ public class EmployeeController {
             Long id = Long.valueOf((String) dto.get("id"));
             return apiService.getAllStudentOfClass(id);
         };
+        return commonUtils.handleApi(excuteApi);
+    }
+
+    @PostMapping("/updateMobileStudent")
+    public ResultDto<Boolean> updateMobileStudent(@RequestBody StudentStatusDto dto) {
+        ExcuteApi<Boolean> excuteApi = () -> apiService.updateMobileStudent(dto);
         return commonUtils.handleApi(excuteApi);
     }
 

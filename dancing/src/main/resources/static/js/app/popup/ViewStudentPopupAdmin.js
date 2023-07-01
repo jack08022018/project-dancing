@@ -1,8 +1,8 @@
-Ext.define('ext.popup.ViewStudentPopup', {
+Ext.define('ext.popup.ViewStudentPopupAdmin', {
 	extend: 'component.MeWindow',
 	title: 'Student List',
-	width: 700,
-	defaultWidth: 700,
+	width: 800,
+	defaultWidth: 800,
 	layout: 'vbox',
 	bodyPadding: 5,
 	reloadPopup: function(){},
@@ -12,9 +12,16 @@ Ext.define('ext.popup.ViewStudentPopup', {
 		var me = this;
 
 		me.reloadPopup = function(classId) {
-			getAllStudentOfClass(classId);
+			currentClass = classId;
+			getAllStudentOfClass();
 			me.show();
 		}
+
+		let changeStudentStatusPopup = Ext.create('ext.popup.ChangeStudentStatusPopup', {
+            reloadParent: function() {
+                getAllStudentOfClass();
+            }
+        });
 
         let mainStore = Ext.widget('mestore');
         let mainGrid = Ext.create('Ext.grid.Panel', {
@@ -31,12 +38,20 @@ Ext.define('ext.popup.ViewStudentPopup', {
                 {text : 'Student Name', width: 150, dataIndex: 'name', sortable: false, menuDisabled: true},
                 {text : 'Mobile', width: 100, dataIndex: 'mobile', align : 'center', sortable: false, menuDisabled: true},
                 {text : 'Status', width: 90, dataIndex: 'status', align : 'center', sortable: false, menuDisabled: true},
-                {text : 'Status', dataIndex: 'status', align: 'center', width: 90, sortable: false, menuDisabled: true},
+                {text : 'Status', dataIndex: 'status', align: 'center', width: 90, sortable: false, menuDisabled: true,
+                    renderer: function(value, rootRecord, record) {
+                        return `<a href="#" data-action="view" class="grid-icon">${value}</a>`;
+                    }
+                },
                 {text : 'Notes', minWidth: 200, flex: 1, dataIndex: 'notes', cellWrap: true, sortable: false, menuDisabled: true},
             ],
             listeners: {
                 cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
-                    console.log(record.data)
+                    if($(e.target).data('action') == 'view') {
+                        changeStudentStatusPopup.reloadPopup(record.data);
+                    }else {
+                        console.log(record.data)
+                    }
                 },
             },
         });
@@ -44,10 +59,11 @@ Ext.define('ext.popup.ViewStudentPopup', {
 		this.items = [mainGrid];
 		this.callParent(arguments);
 
-		async function getAllStudentOfClass(classId) {
+        let currentClass;
+		async function getAllStudentOfClass() {
             try {
                 let params = {
-                    id: classId + ''
+                    id: currentClass + ''
                 };
                 let ajaxUrl = 'employee/getAllStudentOfClass';
                 let json = await postDataAjax(ajaxUrl, params);

@@ -27,13 +27,13 @@ public class StudentAssignEntity implements Serializable {
     private Long id;
 
     @Column(name = "id_class", nullable = false)
-    private Integer idClass;
+    private Long idClass;
 
     @Column(name = "id_student", nullable = false)
-    private Integer idStudent;
+    private Long idStudent;
 
     @Column(name = "id_employee", nullable = false)
-    private Integer idEmployee;
+    private Long idEmployee;
 
     @Column(name = "mobile_employee", nullable = false)
     private String mobileEmployee;

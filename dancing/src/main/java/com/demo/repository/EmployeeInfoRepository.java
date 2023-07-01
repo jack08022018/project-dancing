@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface EmployeeInfoRepository extends JpaRepository<EmployeeInfoEntity, Integer> {
+public interface EmployeeInfoRepository extends JpaRepository<EmployeeInfoEntity, Long> {
     @Query(value = """
             select A.*
              from employee_info A

@@ -110,6 +110,8 @@ Ext.define('ext.AdminStudent', {
 			handler: function() {
 				currentInfo = {};
 				formInfo.reset();
+				btnAssign.setHidden(true);
+				btnUpdateMobile.setHidden(true);
 				rightPanel.setDisabled(false);
 			}
 		});
@@ -118,6 +120,7 @@ Ext.define('ext.AdminStudent', {
             text: 'Save',
             iconCls: 'far fa-save btn-icon',
             padding: '8 10',
+            margin: '0 0 0 10',
             handler: function() {
                 saveStudentInfo();
             }
@@ -125,18 +128,29 @@ Ext.define('ext.AdminStudent', {
 
         let assignStudentPopup = Ext.create('ext.popup.AssignStudentPopup', {
             reloadParent: function(info) {
-//                resetFormInfo();
-//                mainStore.loadPage(1, {
-//                    params: paramsToSearch
-//                })
+            }
+        });
+        let updateMobileStudentPopup = Ext.create('ext.popup.UpdateMobileStudentPopup', {
+            reloadParent: function(info) {
             }
         });
         let btnAssign = Ext.widget('mebutton', {
             text: 'Assign Student',
             iconCls: 'far fa-save btn-icon',
             padding: '8 10',
+            hidden: true,
             handler: function() {
                 assignStudentPopup.reloadPopup(currentInfo);
+            }
+        });
+        let btnUpdateMobile = Ext.widget('mebutton', {
+            text: 'Update Mobile',
+            iconCls: 'far fa-save btn-icon',
+            padding: '8 10',
+            margin: '0 0 0 10',
+            hidden: true,
+            handler: function() {
+                updateMobileStudentPopup.reloadPopup(currentInfo);
             }
         });
 
@@ -153,7 +167,7 @@ Ext.define('ext.AdminStudent', {
                 {xtype: 'metext', columnWidth: .5, fieldLabel: 'Email', labelWidth: 55, name: 'email', margin: '5 0 0 10'},
                 {xtype: 'mearea', columnWidth: 1, fieldLabel: 'Notes', labelWidth: 60, name: 'notes', margin: '5 0 0 0'},
                 {xtype: 'container', layout: 'hbox', columnWidth: 1, margin: '5 0 0 0',
-                    items: [btnAssign, {xtype: 'tbfill'}, btnSave]
+                    items: [{xtype: 'tbfill'}, btnAssign, btnUpdateMobile, btnSave]
                 },
 			]
 		});
@@ -222,6 +236,8 @@ Ext.define('ext.AdminStudent', {
 				    mainStore.removeAll();
 				}
 				rightPanel.setDisabled(true);
+				btnAssign.setHidden(true);
+				btnUpdateMobile.setHidden(true);
 			}catch(e) {
 				handleException(e);
 			}
@@ -240,12 +256,15 @@ Ext.define('ext.AdminStudent', {
                 getFormField(formInfo, 'name').setValue(info.name);
                 getFormField(formInfo, 'age').setValue(info.age);
                 getFormField(formInfo, 'mobile').setValue(info.mobile);
+                getFormField(formInfo, 'mobile').setReadOnly(true);
                 getFormField(formInfo, 'address').setValue(info.address);
                 getFormField(formInfo, 'facebook').setValue(info.facebook);
                 getFormField(formInfo, 'email').setValue(info.email);
                 getFormField(formInfo, 'notes').setValue(info.notes);
                 currentInfo = info;
                 rightPanel.setDisabled(false);
+				btnAssign.setHidden(false);
+				btnUpdateMobile.setHidden(false);
             }catch(e) {
                 handleException(e);
             }
