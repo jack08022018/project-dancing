@@ -284,7 +284,7 @@ Ext.define('ext.AdminStudent', {
                 currentInfo.notes = getFormField(formInfo, 'notes').getValue().trim();
                 console.log(currentInfo);
                 let ajaxUrl = 'employee/saveStudent';
-                await postDataAjax(ajaxUrl, currentInfo);
+                await saveDataAjax(ajaxUrl, currentInfo);
             }catch(e) {
                 handleException(e);
             }

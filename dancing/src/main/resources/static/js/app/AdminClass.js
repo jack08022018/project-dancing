@@ -325,7 +325,7 @@ Ext.define('ext.AdminClass', {
                 currentInfo.totalDays = getFormField(formInfo, 'totalDays').getValue();
 
                 let ajaxUrl = 'admin/saveClassInfo';
-                await postDataAjax(ajaxUrl, currentInfo);
+                await saveDataAjax(ajaxUrl, currentInfo);
                 showMessageSaveSuccess();
             }catch(e) {
                 handleException(e);

@@ -158,7 +158,7 @@ Ext.define('ext.popup.AssignStudentPopup', {
                     'idStudent': currentStudent.id,
                     'mobileEmployee': mobileEmployee
                 };
-                await postDataAjax(ajaxUrl, params);
+                await saveDataAjax(ajaxUrl, params);
                 showMessageSaveSuccess();
                 getClassListCanAssign();
             }catch(e) {

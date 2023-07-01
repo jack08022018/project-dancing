@@ -186,7 +186,7 @@ Ext.define('ext.StudioInfo', {
 
                 console.log(currentInfo)
                 let ajaxUrl = 'admin/saveStudio';
-                await postDataAjax(ajaxUrl, currentInfo);
+                await saveDataAjax(ajaxUrl, currentInfo);
                 showMessageSaveSuccess();
             }catch(e) {
                 handleException(e);

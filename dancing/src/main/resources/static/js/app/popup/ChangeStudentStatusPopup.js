@@ -80,7 +80,7 @@ Ext.define('ext.popup.ChangeStudentStatusPopup', {
                 console.log(params)
 
                 let ajaxUrl = 'admin/changeStudentStatus';
-                await postDataAjax(ajaxUrl, params);
+                await saveDataAjax(ajaxUrl, params);
                 showMessageSaveSuccess();
                 me.reloadParent();
                 me.close();
