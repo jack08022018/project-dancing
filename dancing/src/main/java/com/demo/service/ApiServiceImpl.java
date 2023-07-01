@@ -10,7 +10,9 @@ import com.demo.constant.ResponseStatus;
 import com.demo.constant.UserStatus;
 import com.demo.constant.UserType;
 import com.demo.dto.ClassInfoInterface;
+import com.demo.dto.StudentAssignInfo;
 import com.demo.dto.StudentInfo;
+import com.demo.dto.StudentStatusDto;
 import com.demo.entity.*;
 import com.demo.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -189,6 +191,24 @@ public class ApiServiceImpl implements ApiService {
         classInfo.setTotalStudentAssign(totalStudentAssign + 1);
         classInfo.setLastUpdate(LocalDateTime.now());
         classInfoRepository.save(classInfo);
+        return true;
+    }
+
+    @Override
+    public List<StudentAssignInfo> getAllStudentOfClass(long id) {
+        return studentAssignRepository.getAllStudentOfClass(id);
+    }
+
+    @Override
+    @Transactional(rollbackFor = {Exception.class, RuntimeException.class})
+    public boolean changeStudentStatus(StudentStatusDto dto) throws Exception {
+        var entity = studentAssignRepository.findById(dto.getId())
+                .filter(s -> s.getStatus() != AssignStatus.DELETE)
+                .orElseThrow(() -> new Exception("Student not found!"));
+        entity.setStatus(AssignStatus.getEnum(dto.getStatus()));
+        entity.setNotes(dto.getNotes());
+        entity.setLastUpdate(LocalDateTime.now());
+        studentAssignRepository.save(entity);
         return true;
     }
 

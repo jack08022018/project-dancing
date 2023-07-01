@@ -2,6 +2,7 @@ package com.demo.controller;
 
 
 import com.demo.dto.ResultDto;
+import com.demo.dto.StudentStatusDto;
 import com.demo.entity.ClassInfoEntity;
 import com.demo.entity.StudentAssignEntity;
 import com.demo.entity.StudioInfoEntity;
@@ -38,6 +39,12 @@ public class AdminController {
     @PostMapping("/assignStudent")
     public ResultDto<Boolean> assignStudent(@RequestBody StudentAssignEntity dto) {
         ExcuteApi<Boolean> excuteApi = () -> apiService.assignStudentByAdmin(dto);
+        return commonUtils.handleApi(excuteApi);
+    }
+
+    @PostMapping("/changeStudentStatus")
+    public ResultDto<Boolean> changeStudentStatus(@RequestBody StudentStatusDto dto) {
+        ExcuteApi<Boolean> excuteApi = () -> apiService.changeStudentStatus(dto);
         return commonUtils.handleApi(excuteApi);
     }
 

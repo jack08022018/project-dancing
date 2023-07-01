@@ -1,10 +1,11 @@
 package com.demo.service;
 
-import com.demo.config.exception.CommonException;
 import com.demo.config.jwt.payload.LoginRequest;
 import com.demo.config.jwt.payload.LoginResponse;
 import com.demo.dto.ClassInfoInterface;
+import com.demo.dto.StudentAssignInfo;
 import com.demo.dto.StudentInfo;
+import com.demo.dto.StudentStatusDto;
 import com.demo.entity.ClassInfoEntity;
 import com.demo.entity.StudentAssignEntity;
 import com.demo.entity.StudentInfoEntity;
@@ -26,4 +27,6 @@ public interface ApiService {
     List<ClassInfoInterface> getClassListCanAssign(ClassInfoEntity dto);
     boolean assignStudent(StudentAssignEntity dto) throws Exception;
     boolean assignStudentByAdmin(StudentAssignEntity dto) throws Exception;
+    List<StudentAssignInfo> getAllStudentOfClass(long id);
+    boolean changeStudentStatus(StudentStatusDto dto) throws Exception;
 }

@@ -3,6 +3,7 @@ package com.demo.controller;
 
 import com.demo.dto.ClassInfoInterface;
 import com.demo.dto.ResultDto;
+import com.demo.dto.StudentAssignInfo;
 import com.demo.dto.StudentInfo;
 import com.demo.entity.ClassInfoEntity;
 import com.demo.entity.StudentAssignEntity;
@@ -11,6 +12,7 @@ import com.demo.entity.StudioInfoEntity;
 import com.demo.service.ApiService;
 import com.demo.utils.CommonUtils;
 import com.demo.utils.ExcuteApi;
+import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.ModelMap;
@@ -68,6 +70,15 @@ public class EmployeeController {
     @PostMapping("/assignStudent")
     public ResultDto<Boolean> assignStudent(@RequestBody StudentAssignEntity dto) {
         ExcuteApi<Boolean> excuteApi = () -> apiService.assignStudent(dto);
+        return commonUtils.handleApi(excuteApi);
+    }
+
+    @PostMapping("/getAllStudentOfClass")
+    public ResultDto<List<StudentAssignInfo>> getAllStudentOfClass(@RequestBody ModelMap dto) {
+        ExcuteApi<List<StudentAssignInfo>> excuteApi = () -> {
+            Long id = Long.valueOf((String) dto.get("id"));
+            return apiService.getAllStudentOfClass(id);
+        };
         return commonUtils.handleApi(excuteApi);
     }
 
