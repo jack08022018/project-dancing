@@ -87,13 +87,17 @@ Ext.define('ext.popup.AssignStudentPopup', {
                         return record.data.startTime + ' ~ ' + record.data.endTime;
                     }
                 },
-                {text : 'Address', width: 200, dataIndex: 'address', align : 'center', sortable: false, menuDisabled: true},
+                {text : 'Address', width: 200, dataIndex: 'address', align : 'center', sortable: false, menuDisabled: true,
+                    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return record.data.studioName + ' - ' + record.data.address;
+                    }
+                },
+                {text : 'Total Student', width: 100, dataIndex: 'totalStudentAssign', align : 'center', sortable: false, menuDisabled: true},
                 {text : 'Min max Student', width: 120, dataIndex: 'minStudent', align : 'center', sortable: false, menuDisabled: true,
                     renderer: function(value, metaData, record, row, col, store, gridView) {
                         return record.data.minStudent + ' ~ ' + record.data.maxStudent;
                     }
                 },
-                {text : 'Total Student', width: 100, dataIndex: 'totalStudentAssign', align : 'center', sortable: false, menuDisabled: true},
             ],
             listeners: {
                 cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {

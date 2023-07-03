@@ -111,6 +111,11 @@ Ext.define('ext.AdminClass', {
                         return `<a href="#" data-action="view" class="grid-icon">  ${value}  </a>`;
                     }
                 },
+                {text : 'Min max Student', width: 120, dataIndex: 'minStudent', align : 'center', sortable: false, menuDisabled: true,
+                    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return record.data.minStudent + ' ~ ' + record.data.maxStudent;
+                    }
+                },
             ],
 			listeners: {
 				cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {

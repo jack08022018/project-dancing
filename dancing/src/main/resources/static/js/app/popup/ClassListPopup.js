@@ -1,8 +1,8 @@
 Ext.define('ext.popup.ClassListPopup', {
 	extend: 'component.MeWindow',
 	title: 'Class List',
-	width: 1000,
-	defaultWidth: 1000,
+	width: 1200,
+	defaultWidth: 1200,
 	layout: 'vbox',
 	bodyPadding: '10 10 0 10',
 	reloadPopup: function(){},
@@ -107,6 +107,11 @@ Ext.define('ext.popup.ClassListPopup', {
                 {text : 'Total Student', dataIndex: 'totalStudentAssign', align: 'center', width: 120, sortable: false, menuDisabled: true,
                     renderer: function(value, rootRecord, record) {
                         return `<a href="#" data-action="view" class="grid-icon">  ${value}  </a>`;
+                    }
+                },
+                {text : 'Min max Student', width: 120, dataIndex: 'minStudent', align : 'center', sortable: false, menuDisabled: true,
+                    renderer: function(value, metaData, record, row, col, store, gridView) {
+                        return record.data.minStudent + ' ~ ' + record.data.maxStudent;
                     }
                 },
             ],

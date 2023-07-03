@@ -27,6 +27,13 @@ public class ViewController {
         return view;
     }
 
+    @GetMapping("/studentView")
+    public ModelAndView studentView() {
+        ModelAndView view = new ModelAndView();
+        view.setViewName("studentView");
+        return view;
+    }
+
     @GetMapping("/adminPage")
     public ModelAndView adminClass() {
         ModelAndView view = new ModelAndView();
